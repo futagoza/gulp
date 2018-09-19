@@ -13,7 +13,7 @@
     "author": "Futago-za Ryuu <futagoza.ryuu@gmail.com>",
     "main": "index.js",
     "scripts": {
-        "lint": "mocha .",
+        "lint": "eslint .",
         "bump:major": "gulp bump --major",
         "bump:minor": "gulp bump --minor",
         "bump:patch": "gulp bump --patch",
@@ -26,6 +26,7 @@
         "minimist": "1.2.0"
     },
     "devDependencies": {
+        "eslint": "5",
         "eslint-config-futagozaryuu": "5",
         "gulp": "4.0.0",
         "gulp-eslint": "5.0.0",
