@@ -9,16 +9,14 @@ const minimist = require( "minimist" );
  * @param {String[]} [argv] This is `process.argv` by default.
  * @param {{}} [options] The default options to pass to `gulp-bump`.
  */
-function bump( argv, options ) {
+function bump( argv, options = {} ) {
 
     if ( ! Array.isArray( argv ) ) {
 
-        options = argv;
-        argv = void 0;
+        options = argv || {};
+        argv = options.argv || process.argv.slice( 2 );
 
     }
-    options = options || {};
-    argv = argv || options.argv || process.argv.slice( 2 );
 
     Object.assign( options, minimist( argv, {
 
