@@ -10,7 +10,7 @@ As well as the options from _gulp-bump_, you can use the following on the CLI, a
 
 | cli option | gulp-bump option |
 | ---------- | ---------------- |
-| `--new-version value` | `version: value` |
+| `--new-version value`<br>`-V value` | `version: value` |
 | `--major` | `type: "major"` |
 | `--minor` | `type: "minor"` |
 | `--patch` | `type: "patch"` |

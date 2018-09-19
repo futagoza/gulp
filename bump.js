@@ -23,6 +23,9 @@ function bump( argv, options ) {
 
         boolean: [ "major", "minor", "patch" ],
         string: [ "type", "new-version" ],
+        alias: {
+            V: "new-version"
+        },
 
     } ) );
     options.version = options[ "new-version" ] || options.version;
