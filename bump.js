@@ -2,6 +2,7 @@
 
 const gulpbump = require( "gulp-bump" );
 const minimist = require( "minimist" );
+
 /**
  * Will bump the `version` field of any file passed to it.
  * 
