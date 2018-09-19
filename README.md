@@ -4,7 +4,9 @@ Tasks and helpers for use in `gulpfile.js`
 
 Will bump the `version` field of any file passed to it.
 
-This is just a wrapper around _[gulp-bump](https://www.npmjs.com/package/gulp-bump)_ to take options from the cli and pass them to _gulp-bump_, so if you're planning to programmatically pass options, just use `gulp-bump` directly.
+This is just a wrapper around _[gulp-bump](https://www.npmjs.com/package/gulp-bump)_; it takes arguments from the command line interface, passes them through _[minimist](https://www.npmjs.com/package/minimist)_ to get the options that are then passed to _gulp-bump_. You can also programmatically pass default options.
+
+> Optionally you can pass the `argv` yourself as the first argument (an array), or as `options.argv`
 
 As well as the options from _gulp-bump_, you can use the following on the CLI, and it will get translated to the appropriate option used for _gulp-bump_.
 
