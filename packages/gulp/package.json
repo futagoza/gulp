@@ -1,6 +1,6 @@
 {
     "name": "@futagoza/gulp",
-    "version": "0.3.0",
+    "version": "0.3.1",
     "description": "Tasks and helpers for use in gulpfile.js",
     "keywords": [
         "gulp",
