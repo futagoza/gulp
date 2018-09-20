@@ -9,6 +9,7 @@
         "exec",
         "publish"
     ],
+    "homepage": "https://github.com/futagoza/gulp",
     "repository": "https://github.com/futagoza/gulp/tree/master/packages/gulp",
     "license": "MIT",
     "author": "Futago-za Ryuu <futagoza.ryuu@gmail.com>",
