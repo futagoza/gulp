@@ -1,7 +1,4 @@
-[![History](https://img.shields.io/badge/github.com/futagoza/gulp-changelog-yellow.svg)](https://github.com/futagoza/gulp/blob/master/CHANGELOG.md)
-[![license](https://img.shields.io/badge/license-mit-blue.svg)](https://opensource.org/licenses/MIT)
-
-Tasks and helpers for use in `gulpfile.js`
+Plugins and functions for use with Gulp 4
 
 ## @futagoza/gulp/bump
 
@@ -40,4 +37,9 @@ Why use this instead of NPM or Yarn? Simple, life becomes easier:
 | tag | --tag _name_<br>-t _name_ | --tag _name_ |
 | yarn | --yarn | |
 
-> NOTE: To circumvent an issue with running `npm publish` from a `yarn run ...` command, the registry option is set to _https://registry.npmjs.org/_ by default when running `npm publish` only, otherwise it is only included when specified.
+**NOTE:** To circumvent an issue with running `npm publish` from a `yarn run ...` command, the registry option is set to _https://registry.npmjs.org/_ by default when running `npm publish` only, otherwise it is only included when specified.
+
+-----
+
+[![History](https://img.shields.io/badge/github.com/futagoza/gulp-changelog-yellow.svg)](https://github.com/futagoza/gulp/blob/master/CHANGELOG.md)
+[![license](https://img.shields.io/badge/license-mit-blue.svg)](https://opensource.org/licenses/MIT)

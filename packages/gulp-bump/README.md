@@ -1,6 +1,3 @@
-[![History](https://img.shields.io/badge/github.com/futagoza/gulp-changelog-yellow.svg)](https://github.com/futagoza/gulp/blob/master/CHANGELOG.md)
-[![license](https://img.shields.io/badge/license-mit-blue.svg)](https://opensource.org/licenses/MIT)
-
 > This package is included with [@futagoza/gulp](https://www.npmjs.com/package/@futagoza/gulp)
 
 Will bump the `version` field of any file passed to it from Gulp.
@@ -32,3 +29,8 @@ As well as the options from _gulp-bump_, you can use the following on the CLI, a
 | `--major` | `type: "major"` |
 | `--minor` | `type: "minor"` |
 | `--patch` | `type: "patch"` |
+
+-----
+
+[![History](https://img.shields.io/badge/github.com/futagoza/gulp-changelog-yellow.svg)](https://github.com/futagoza/gulp/blob/master/CHANGELOG.md)
+[![license](https://img.shields.io/badge/license-mit-blue.svg)](https://opensource.org/licenses/MIT)
