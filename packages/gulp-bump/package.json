@@ -1,0 +1,23 @@
+{
+    "name": "@futagoza/gulp-bump",
+    "version": "0.3.0",
+    "description": "Will bump the `version` field of any file passed to it from Gulp.",
+    "keywords": [
+        "gulp",
+        "gulp-plugin",
+        "bump",
+        "package.json",
+        "versioning"
+    ],
+    "repository": "https://github.com/futagoza/gulp/tree/master/packages/gulp-bump",
+    "license": "MIT",
+    "author": "Futago-za Ryuu <futagoza.ryuu@gmail.com>",
+    "main": "index.js",
+    "dependencies": {
+        "gulp-bump": "3.1.1",
+        "minimist": "1.2.0"
+    },
+    "engines": {
+        "node": ">= 6"
+    }
+}
