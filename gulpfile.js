@@ -5,7 +5,7 @@ const bump = require( "@futagoza/gulp/bump" );
 const publish = require( "@futagoza/gulp/publish" );
 const pump = require( "pump" );
 
-// Bump the "version" field of `package.json`
+// Bump the "version" field of every `package.json` in the packages directory
 gulp.task( "bump", () => pump(
 
     gulp.src( "packages/**/package.json" ),
@@ -14,7 +14,7 @@ gulp.task( "bump", () => pump(
 
 ) );
 
-// Puplish `@futagoza/gulp`
+// Publish all the packages in this monorepo (versions should be synced before-hand)
 gulp.task( "publish", () => pump(
     gulp.src( "packages/*" ),
     publish( )
