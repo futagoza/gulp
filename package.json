@@ -1,11 +1,11 @@
 {
     "name": "@futagoza/gulp",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "description": "Tasks and helpers for use in gulpfile.js",
     "keywords": [
         "gulp",
         "bump",
-        "rollout",
+        "exec",
         "publish"
     ],
     "repository": "futagoza/gulp",
