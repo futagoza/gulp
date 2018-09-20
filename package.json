@@ -4,6 +4,7 @@
     "description": "Tasks and helpers for use in gulpfile.js",
     "keywords": [
         "gulp",
+        "gulp-plugin",
         "bump",
         "exec",
         "publish"
@@ -14,16 +15,20 @@
     "main": "index.js",
     "scripts": {
         "lint": "eslint .",
-        "bump:major": "gulp bump --major",
-        "bump:minor": "gulp bump --minor",
-        "bump:patch": "gulp bump --patch",
-        "rollout": "gulp publish"
+        "bump-major": "gulp bump --major",
+        "bump-minor": "gulp bump --minor",
+        "bump-patch": "gulp bump --patch",
+        "rollout": "gulp publish",
+        "rollout-dry": "gulp publish --dry"
     },
     "dependencies": {
         "bluebird": "3.5.2",
         "glob": "7.1.3",
         "gulp-bump": "3.1.1",
-        "minimist": "1.2.0"
+        "minimist": "1.2.0",
+        "plugin-error": "1.0.1",
+        "plugin-log": "0.1.0",
+        "through2": "2.0.3"
     },
     "devDependencies": {
         "eslint": "5",
