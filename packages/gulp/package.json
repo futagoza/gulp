@@ -1,0 +1,28 @@
+{
+    "name": "@futagoza/gulp",
+    "version": "0.3.0",
+    "description": "Tasks and helpers for use in gulpfile.js",
+    "keywords": [
+        "gulp",
+        "gulp-plugin",
+        "bump",
+        "exec",
+        "publish"
+    ],
+    "repository": "https://github.com/futagoza/gulp/tree/master/packages/gulp",
+    "license": "MIT",
+    "author": "Futago-za Ryuu <futagoza.ryuu@gmail.com>",
+    "main": "index.js",
+    "dependencies": {
+        "bluebird": "3.5.2",
+        "glob": "7.1.3",
+        "gulp-bump": "3.1.1",
+        "minimist": "1.2.0",
+        "plugin-error": "1.0.1",
+        "plugin-log": "0.1.0",
+        "through2": "2.0.3"
+    },
+    "engines": {
+        "node": ">= 6"
+    }
+}
