@@ -1,5 +1,9 @@
 > Commit history: [https://github.com/futagoza/gulp/commits/master](https://github.com/futagoza/gulp/commits/master)
 
+## v0.3.0 _(20 September 2018)_
+
+* Added `@futagoza/gulp/publish`
+
 ## v0.2.0 _(20 September 2018)_
 
 * Handle options for `@futagoza/gulp/bump` more cleanly.
