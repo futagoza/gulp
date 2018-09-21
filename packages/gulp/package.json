@@ -1,13 +1,24 @@
 {
     "name": "@futagoza/gulp",
     "version": "0.3.2",
-    "description": "Tasks and helpers for use in gulpfile.js",
+    "description": "Plugins and functions for use with Gulp 4",
     "keywords": [
         "gulp",
         "gulp-plugin",
         "bump",
+        "package.json",
+        "versioning",
+        "child_process",
+        "spawn",
+        "Promise",
+        "run",
+        "command",
         "exec",
-        "publish"
+        "npm",
+        "yarn",
+        "publish",
+        "package",
+        "release"
     ],
     "homepage": "https://github.com/futagoza/gulp",
     "repository": "https://github.com/futagoza/gulp/tree/master/packages/gulp",
@@ -17,12 +28,7 @@
     "dependencies": {
         "@futagoza/gulp-bump": "0.3.x",
         "@futagoza/node-run": "0.3.x",
-        "bluebird": "3.5.2",
-        "glob": "7.1.3",
-        "minimist": "1.2.0",
-        "plugin-error": "1.0.1",
-        "plugin-log": "0.1.0",
-        "through2": "2.0.3"
+        "@futagoza/gulp-publish-package": "0.3.x"
     },
     "engines": {
         "node": ">= 6"
