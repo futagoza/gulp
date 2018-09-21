@@ -1,6 +1,6 @@
 {
     "name": "@futagoza/gulp",
-    "version": "0.3.2",
+    "version": "0.3.3",
     "description": "Plugins and functions for use with Gulp 4",
     "keywords": [
         "gulp",

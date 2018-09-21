@@ -1,6 +1,6 @@
 {
     "name": "@futagoza/node-run",
-    "version": "0.3.2",
+    "version": "0.3.3",
     "description": "Will run 'child_process.spawn()' wrapped in a Promise.",
     "keywords": [
         "child_process",
