@@ -1,5 +1,13 @@
 > Commit history: [https://github.com/futagoza/gulp/commits/master](https://github.com/futagoza/gulp/commits/master)
 
+## v0.4.0 _(22 September 2018)
+
+* Imported the code and dependencies from `gulp-bump` into `@futagoza/gulp-bump`
+* Overhaul the documentation for `@futagoza/gulp-bump`
+* Fix repository field for `@futagoza/gulp-publish-package`
+* Added `@futagoza/publish-package`, a non-gulp package
+* Set `@futagoza/gulp-publish-package` to use `@futagoza/publish-package`
+
 ## v0.3.3 _(21 September 2018)
 
 * Added `@futagoza/gulp-publish-package`
@@ -9,6 +17,7 @@
 
 * Added `@futagoza/node-run`, a non-gulp package
 * Set `@futagoza/gulp/exec` to export `@futagoza/node-run`
+* Updated documentation for `@futagoza/gulp*` packages 
 
 ## v0.3.1 _(20 September 2018)
 
