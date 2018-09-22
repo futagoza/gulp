@@ -4,8 +4,9 @@ Plugins and functions for use with Gulp 4
 | ------- | ------- | ------------ |
 | [@futagoza/gulp][001] | [![release][002]][003] | [![dependencies][004]][005] |
 | [@futagoza/gulp-bump][011] | [![release][012]][013] | [![dependencies][014]][015] |
-| [@futagoza/node-run][021] | [![release][022]][023] | [![dependencies][024]][025] |
 | [@futagoza/node-publish-package][031] | [![release][032]][033] | [![dependencies][034]][035] |
+| [@futagoza/node-run][021] | [![release][022]][023] | [![dependencies][024]][025] |
+| [@futagoza/publish-package][041] | [![release][042]][043] | [![dependencies][044]][045] |
 
 <!-- @futagoza/gulp -->
 [001]: https://github.com/@futagoza/gulp/tree/master/packages/gulp
@@ -21,6 +22,13 @@ Plugins and functions for use with Gulp 4
 [014]: https://img.shields.io/david/futagoza/gulp.svg?path=packages/gulp-bump
 [015]: https://david-dm.org/futagoza/gulp?path=packages/gulp-bump
 
+<!-- @futagoza/gulp-publish-package -->
+[031]: https://github.com/@futagoza/gulp/tree/master/packages/gulp-publish-package
+[032]: https://img.shields.io/npm/v/@futagoza/gulp-publish-package.svg
+[033]: https://www.npmjs.com/package/@futagoza/gulp-publish-package
+[034]: https://img.shields.io/david/futagoza/gulp.svg?path=packages/gulp-publish-package
+[035]: https://david-dm.org/futagoza/gulp?path=packages/gulp-publish-package
+
 <!-- @futagoza/node-run -->
 [021]: https://github.com/@futagoza/gulp/tree/master/packages/node-run
 [022]: https://img.shields.io/npm/v/@futagoza/node-run.svg
@@ -28,9 +36,9 @@ Plugins and functions for use with Gulp 4
 [024]: https://img.shields.io/david/futagoza/gulp.svg?path=packages/node-run
 [025]: https://david-dm.org/futagoza/gulp?path=packages/node-run
 
-<!-- @futagoza/gulp-publish-package -->
-[031]: https://github.com/@futagoza/gulp/tree/master/packages/gulp-publish-package
-[032]: https://img.shields.io/npm/v/@futagoza/gulp-publish-package.svg
-[033]: https://www.npmjs.com/package/@futagoza/gulp-publish-package
-[034]: https://img.shields.io/david/futagoza/gulp.svg?path=packages/gulp-publish-package
-[035]: https://david-dm.org/futagoza/gulp?path=packages/gulp-publish-package
+<!-- @futagoza/publish-package -->
+[041]: https://github.com/@futagoza/gulp/tree/master/packages/publish-package
+[042]: https://img.shields.io/npm/v/@futagoza/publish-package.svg
+[043]: https://www.npmjs.com/package/@futagoza/publish-package
+[044]: https://img.shields.io/david/futagoza/gulp.svg?path=packages/publish-package
+[045]: https://david-dm.org/futagoza/gulp?path=packages/publish-package
