@@ -2,104 +2,38 @@
 
 const { existsSync } = require( "fs" );
 const { join } = require( "path" );
-const run = require( "@futagoza/node-run" );
-const bluebird = require( "bluebird" );
-const glob = require( "glob" );
-const minimist = require( "minimist" );
+const chalk = require( "chalk" );
+const publish = require( "@futagoza/publish-package" );
 const PluginError = require( "plugin-error" );
 const log = require( "plugin-log" );
 const through = require( "through2" );
-
-const CMD = process.platform === "win32" ? ".cmd" : "";
-const error = message => new PluginError( "@futagoza/gulp/publish", message );
-const rejection = reason => Promise.reject( error( reason ) );
+const parseArgv = require( "./lib/parseArgv" );
 
 /**
+ * Builds a Gulp plugin error for this package.
  * 
- * 
- * @param {String} [path]
- * @param {{}} [options]
+ * @param {String} message The error message
  */
-function publishFolder( path, options = {} ) {
+function error( message ) {
 
-    if ( typeof path !== "string" ) {
-
-        options = typeof path === "object" ? path : {};
-        path = options.path || options.folder || options.dir || false;
-
-    }
-
-    if ( ! path ) return rejection( "No path specified to publish" );
-    if ( options.public || options.scoped ) {
-
-        if ( options.access ) return rejection( "The options `access` and `public` cant be used together" );
-
-        options.access = "public";
-
-    }
-    if ( options.restricted || options.private ) {
-
-        const ERROR_REASON = "The options `access`, `private` and/or `restricted` cant be used together";
-        if ( options.access || ( options.restricted && options.private ) ) return rejection( ERROR_REASON );
-
-        options.access = "restricted";
-
-    }
-
-    const YARN = options.yarn;
-    let command = YARN ? `yarn${ CMD } publish` : `npm${ CMD } publish`;
-    command += ` --access ${ options.access || "public" }`;
-
-    if ( options[ "dry-run" ] || options.dryRun || options.dry ) command += " --dry-run";
-
-    if ( options.otp || options.otpcode ) command += ` --otp ${ options.otp || options.otpcode }`;
-
-    if ( options.tag ) command += " --tag " + options.tag;
-
-    if ( YARN && ( options.newVersion || options.version ) )
-
-        command += ` --new-version ${ options.newVersion || options.version }`;
-
-    if ( ! YARN ) command += ` --registry ${ options.registry || "https://registry.npmjs.org/" }`;
-    else if ( options.registry ) command += ` --registry ${ options.registry }`;
-
-    log( log.colors.magenta( path.replace( /\\/g, "/" ) ), command );
-    return run( command, { cwd: path } );
+    return new PluginError( "@futagoza/gulp-publish", message );
 
 }
 
 /**
- * 
- * 
- * @param {String|String[]} [patterns]
- * @param {{}} [options]
+ * Default status logger.
+ *
+ * @param {String} path The path of the package being published.
+ * @param {String} command Command to spawn.
+ * @param {String[]} args Arguments that will be passed to the spawned process.
  */
-function publishGlob( patterns, options = {} ) {
+function defaultLogger( path, command, args ) {
 
-    if ( typeof patterns !== "string" || ! Array.isArray( patterns ) ) {
+    args = args.slice( 0 );
 
-        options = patterns || {};
-        patterns = options.patterns || options.globs || false;
+    args.unshift( chalk.magenta( path.replace( /\\/g, "/" ) ), command );
 
-    }
-    if ( typeof patterns === "string" ) patterns = [ patterns ];
-
-    if ( ! patterns ) return rejection( "No patterns specified to find paths to publish" );
-
-    return bluebird.all( patterns.map( p => new Promise( ( resolve, reject ) => {
-
-        glob( p, ( err, matches ) => {
-
-            if ( err ) reject( err );
-
-            bluebird
-                .each( matches, d => publishFolder( d, options ) )
-                .catch( reject )
-                .then( resolve );
-
-        } );
-
-    } ) ) );
+    log( ...args );
 
 }
 
@@ -117,23 +51,9 @@ function publishThrough( argv, options = {} ) {
         argv = options.argv || process.argv.slice( 2 );
 
     }
+    options = parseArgv( argv, options );
 
-    Object.assign( options, minimist( argv, {
-
-        boolean: [ "dry-run", "yarn", "public", "private", "restricted" ],
-        string: [ "access", "otp", "tag", "newVersion", "registry" ],
-        alias: {
-            dry: "dry-run",
-            dryRun: "dry-run",
-            "new-version": "newVersion",
-            otpcode: "otp",
-            reg: "registry",
-            scoped: "public",
-            t: "tag",
-            V: "newVersion"
-        },
-
-    } ) );
+    if ( ! options.log ) options.log = defaultLogger;
 
     return through.obj( ( file, encoding, done ) => {
 
@@ -149,7 +69,7 @@ function publishThrough( argv, options = {} ) {
 
         else
 
-            publishFolder( path, options )
+            publish( path, options )
                 .catch( done )
                 .then( result => done( null, result ) );
 
@@ -157,9 +77,4 @@ function publishThrough( argv, options = {} ) {
 
 }
 
-// Exports
 module.exports = publishThrough;
-module.exports.default = publishThrough;
-module.exports.glob = publishGlob;
-module.exports.folder = publishFolder;
-module.exports.through = publishThrough;
