@@ -23,11 +23,11 @@ publish( __dirname, { dry: true } )
 ### options
 
 ```ts
-function publish( path?, options = {} ): Promise;
+function publish( path?: string, options: {} ): Promise;
 ```
 
-| api option | cli option | description |
-| ---------- | ---------- | ---------------- |
+| api option | npm/yarn cli option | description |
+| ---------- | ------------------- | ---------------- |
 | access | --access _scope_ | See [https://docs.npmjs.com/cli/publish][1] |
 | dir | | Alternative to the _path_ argument<sub>1</sub> |
 | dry-run | --dry-run | See [https://docs.npmjs.com/cli/publish][1] |
@@ -42,7 +42,8 @@ function publish( path?, options = {} ): Promise;
 | private | --access _restricted_ | If `true`, uses `--access restricted` |
 | public | --access _public_ | If `true`, uses `--access public` (default) |
 | scoped | --access _public_ | If `true`, uses `--access public` |
-| registry<br>reg | --registry _url_ | See [https://docs.npmjs.com/misc/registry][3] |
+| registry | --registry _url_ | See [https://docs.npmjs.com/misc/registry][3] |
+| reg | --registry _url_ | Alias for _registry_ |
 | restricted | --access _restricted_ | If `true`, uses `--access restricted` |
 | tag | --tag _name_ | See [https://docs.npmjs.com/cli/publish][1] |
 | version | --new-version _value_ | Alias for _new-version_ |
@@ -53,8 +54,6 @@ function publish( path?, options = {} ): Promise;
 **NOTE:** To circumvent an issue with running `npm publish` from a `yarn run ...` command, the registry option is set to _https://registry.npmjs.org/_ by default when running `npm publish` only, otherwise it is only included when specified.
 
 -----
-
-### license
 
 [![History](https://img.shields.io/badge/github.com/futagoza/gulp-changelog-yellow.svg)](https://github.com/futagoza/gulp/blob/master/CHANGELOG.md)
 [![license](https://img.shields.io/badge/license-mit-blue.svg)](https://opensource.org/licenses/MIT)

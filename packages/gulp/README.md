@@ -22,3 +22,5 @@ Will publish the NPM packages passed to it from Gulp.
 
 [![History](https://img.shields.io/badge/github.com/futagoza/gulp-changelog-yellow.svg)](https://github.com/futagoza/gulp/blob/master/CHANGELOG.md)
 [![license](https://img.shields.io/badge/license-mit-blue.svg)](https://opensource.org/licenses/MIT)
+
+_@futagoza/gulp_ is Copyright (c) 2018+ Futago-za Ryuu

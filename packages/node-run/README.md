@@ -4,6 +4,8 @@ This package was created to help develope wrapper tasks in Gulp (`gulpfile.js` t
 
 The arguments are the same as `child_process.spawn()`, but if the second argument isn't an array, it will try `options.args` or `options.argv`; failing that, the first argument (the string) will be split (by default " " is used, but that can be changed using `options.ws`), and all but the first element will be used as the `args` argument, setting the first element as the new command.
 
+### example
+
 ```js
 const run = require( "@futagoza/node-run" );
 
@@ -13,6 +15,8 @@ run( "npm", { args: [ "publish", "--access", "public" ] } );
 
 run( "npm publish --access public" );
 ```
+
+### options
 
 In addition to the options passable to `child_process.spawn()`, the following are supported:
 
@@ -26,3 +30,5 @@ In addition to the options passable to `child_process.spawn()`, the following ar
 
 [![History](https://img.shields.io/badge/github.com/futagoza/gulp-changelog-yellow.svg)](https://github.com/futagoza/gulp/blob/master/CHANGELOG.md)
 [![license](https://img.shields.io/badge/license-mit-blue.svg)](https://opensource.org/licenses/MIT)
+
+_@futagoza/node-run_ is Copyright (c) 2018+ Futago-za Ryuu
