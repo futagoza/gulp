@@ -17,7 +17,7 @@
     "author": "Futago-za Ryuu <futagoza.ryuu@gmail.com>",
     "main": "index.js",
     "dependencies": {
-        "@futagoza/publish-package": "0.3.x",
+        "@futagoza/publish-package": "0.4.x",
         "chalk": "2.4.1",
         "plugin-error": "1.0.1",
         "plugin-log": "0.1.0",
