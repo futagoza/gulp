@@ -1,6 +1,6 @@
 {
     "name": "@futagoza/gulp-publish-package",
-    "version": "0.4.0",
+    "version": "0.4.1",
     "description": "Will publish the NPM/Yarn packages passed to it from Gulp",
     "keywords": [
         "gulp",

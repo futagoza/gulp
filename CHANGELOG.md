@@ -1,5 +1,9 @@
 > Commit history: [https://github.com/futagoza/gulp/commits/master](https://github.com/futagoza/gulp/commits/master)
 
+## v0.4.1 _(23 September 2018)_
+
+* Fix: upgrade `@futagoza/*` dependencies from `0.3.x` to `0.4.x`
+
 ## v0.4.0 _(22 September 2018)
 
 * Imported the code and dependencies from `gulp-bump` into `@futagoza/gulp-bump`
