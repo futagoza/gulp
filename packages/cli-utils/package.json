@@ -1,0 +1,27 @@
+{
+    "name": "@futagoza/cli-utils",
+    "version": "0.4.1",
+    "description": "A set of function's for use in scripts that interact with the CLI.",
+    "keywords": [
+        "cli",
+        "util",
+        "color",
+        "log",
+        "warn",
+        "error",
+        "argv",
+        "parseArgv"
+    ],
+    "homepage": "https://github.com/futagoza/gulp",
+    "repository": "https://github.com/futagoza/gulp/tree/master/packages/cli-utils",
+    "license": "MIT",
+    "author": "Futago-za Ryuu <futagoza.ryuu@gmail.com>",
+    "main": "index.js",
+    "dependencies": {
+        "chalk": "2.4.1",
+        "dateformat": "3.0.3"
+    },
+    "engines": {
+        "node": ">= 6"
+    }
+}
