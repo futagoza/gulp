@@ -26,6 +26,7 @@
     "author": "Futago-za Ryuu <futagoza.ryuu@gmail.com>",
     "main": "index.js",
     "dependencies": {
+        "@futagoza/cli-utils": "0.4.x",
         "@futagoza/gulp-bump": "0.4.x",
         "@futagoza/node-run": "0.4.x",
         "@futagoza/gulp-publish-package": "0.4.x"
