@@ -2,12 +2,11 @@
 
 const { existsSync } = require( "fs" );
 const { join } = require( "path" );
-const chalk = require( "chalk" );
+const { color, log } = require( "@futagoza/cli-utils" );
+const parseArgv = require( "./lib/parseArgv" );
 const publish = require( "@futagoza/publish-package" );
 const PluginError = require( "plugin-error" );
-const log = require( "plugin-log" );
 const through = require( "through2" );
-const parseArgv = require( "./lib/parseArgv" );
 
 /**
  * Builds a Gulp plugin error for this package.
@@ -16,7 +15,7 @@ const parseArgv = require( "./lib/parseArgv" );
  */
 function error( message ) {
 
-    return new PluginError( "@futagoza/gulp-publish", message );
+    return new PluginError( "@futagoza/gulp-publish-package", message );
 
 }
 
@@ -31,9 +30,9 @@ function defaultLogger( path, command, args ) {
 
     args = args.slice( 0 );
 
-    args.unshift( chalk.magenta( path.replace( /\\/g, "/" ) ), command );
+    args.unshift( color.magenta( path.replace( /\\/g, "/" ) ), command );
 
-    log( ...args );
+    log.info( ...args );
 
 }
 

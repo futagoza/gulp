@@ -1,10 +1,9 @@
 "use strict";
 
+const { color, log } = require( "@futagoza/cli-utils" );
 const bumpregex = require( "bump-regex" );
-const chalk = require( "chalk" );
-const minimist = require( "minimist" );
+const parseArgv = require( "./lib/parseArgv" );
 const PluginError = require( "plugin-error" );
-const log = require( "plugin-log" );
 const through = require( "through2" );
 
 /**
@@ -26,11 +25,11 @@ function error( message ) {
  */
 function summary( filename, result ) {
 
-    log(
-        "Bumped", chalk.cyan( result.prev ),
-        "to", chalk.green( result.new ),
+    log.info(
+        "Bumped", color.cyan( result.prev ),
+        "to", color.green( result.new ),
         typeof filename !== "string" ? ""
-            : "in " + chalk.yellow(
+            : "in " + color.yellow(
                 filename
                     .replace( process.cwd(), "" )
                     .replace( /\\/g, "/" )
@@ -55,17 +54,8 @@ function bump( argv, options = {} ) {
 
     }
 
-    options = Object.assign( {}, options, minimist( argv, {
-
-        boolean: [ "case", "major", "minor", "keepmetadata", "patch" ],
-        string: [ "type", "key", "keys", "preid", "regex", "new-version" ],
-        alias: {
-            tag: "keepmetadata",
-            V: "new-version"
-        },
-
-    } ) );
-    options.version = options[ "new-version" ] || options.version;
+    options = parseArgv( argv, options );
+    options.version = options[ "new-version" ] || options.V || options.version;
 
     if ( ! options.type && ! options.version ) {
 

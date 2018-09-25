@@ -5,9 +5,6 @@ const { visitArgv } = require( "@futagoza/cli-utils" );
 /**
  * Will look through the given _argv_-like _array_ for known options.
  * 
- * __NOTE:__ All options are expected to start with `--`, and unless a known NPM or Yarn flag,
- * must always be followed by a value.
- * 
  * __WARNING:__ Will throw a fatel error.
  * 
  * @param {String[]} args The arguments array (typically `process.argv.slice(2)`)
@@ -22,33 +19,30 @@ function parseArgv( args, defaults ) {
     // Iterate over the args
     visitArgv( args, ( arg, nextArg ) => {
 
-        // Remove the `--` at the start
-        const option = arg.slice( 2 );
+        // Remove the `--` or `-` at the start
+        const option = arg.startsWith( "--" ) ? arg.slice( 2 ) : arg.slice( 1 );
 
         switch ( option ) {
 
             // Command line options with values
-            case "access":
+            case "key":
+            case "keys":
             case "new-version":
-            case "newVersion":
-            case "otp":
-            case "otpcode":
-            case "registry":
-            case "reg":
-            case "tag":
+            case "preid":
+            case "regex":
+            case "type":
+            case "V":
                 if ( ! nextArg() ) throw new Error( `Expecting an argument for "${ arg }"` );
                 options[ option ] = nextArg.consume();
                 break;
 
             // Command line options without values (flags)
-            case "dry-run":
-            case "dry":
-            case "dryRun":
-            case "private":
-            case "public":
-            case "scoped":
-            case "restricted":
-            case "yarn":
+            case "case":
+            case "keepmetadata":
+            case "major":
+            case "minor":
+            case "patch":
+            case "tag":
                 options[ option ] = true;
                 break;
 

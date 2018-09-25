@@ -15,11 +15,9 @@
     "author": "Futago-za Ryuu <futagoza.ryuu@gmail.com>",
     "main": "index.js",
     "dependencies": {
+        "@futagoza/cli-utils": "0.4.x",
         "bump-regex": "3.1.1",
-        "chalk": "2.4.1",
-        "minimist": "1.2.0",
         "plugin-error": "1.0.1",
-        "plugin-log": "0.1.0",
         "through2": "2.0.3"
     },
     "engines": {
