@@ -3,6 +3,7 @@
 const { existsSync } = require( "fs" );
 const { join } = require( "path" );
 const { color, log } = require( "@futagoza/cli-utils" );
+const match = require( "gulp-match" );
 const parseArgv = require( "./lib/parseArgv" );
 const publish = require( "@futagoza/publish-package" );
 const PluginError = require( "plugin-error" );
@@ -58,19 +59,13 @@ function publishThrough( argv, options = {} ) {
 
         const path = file.path;
 
-        if ( file.isStream() )
+        if ( file.isStream() ) return done( error( "Streaming not supported" ) );
+        if ( ! existsSync( path ) ) return done( error( "Path not found: " + path ) );
+        if ( ! match( file, options.only || true ) ) return done( null, file );
 
-            done( error( "Streaming not supported" ) );
-
-        else if ( ! existsSync( path ) )
-
-            done( error( "Path not found: " + path ) );
-
-        else
-
-            publish( path, options )
-                .catch( done )
-                .then( result => done( null, result ) );
+        publish( path, options )
+            .catch( done )
+            .then( result => done( null, result ) );
 
     } );
 

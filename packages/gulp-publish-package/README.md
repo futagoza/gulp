@@ -28,7 +28,9 @@ gulp.task( "publish", () => pump(
 
 ### options
 
-The options are the same as [@futagoza/publish-package](https://www.npmjs.com/package/@futagoza/publish-package).
+The options are the same as [@futagoza/publish-package](https://www.npmjs.com/package/@futagoza/publish-package), with the exception of:
+
+- _only_ - Only publish packages that match the condition. See [gulp-match](https://github.com/robrich/gulp-match)
 
 ```ts
 function publish( argv?: string[], options: {} ): stream.Transform;
@@ -44,6 +46,7 @@ The following are CLI options that can be used either in place of them, or to ov
 | dryRun | --dryRun | --dry-run |
 | new-version | --new-version _value_ | --new-version _value_ |
 | newVersion | --newVersion _value_ | --new-version _value_ |
+| only | --only _condition_ | |
 | otp | --otp _value_ | --otp _value_ |
 | otpcode | --otpcode _value_ | --otp _value_ |
 | private | --private | --access _restricted_ |

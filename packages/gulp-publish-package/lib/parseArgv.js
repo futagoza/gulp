@@ -31,6 +31,7 @@ function parseArgv( args, defaults ) {
             case "access":
             case "new-version":
             case "newVersion":
+            case "only":
             case "otp":
             case "otpcode":
             case "registry":

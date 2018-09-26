@@ -28,6 +28,7 @@ function parseArgv( args, defaults ) {
             case "key":
             case "keys":
             case "new-version":
+            case "only":
             case "preid":
             case "regex":
             case "type":

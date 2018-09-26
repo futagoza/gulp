@@ -34,11 +34,12 @@ As well as the options from [gulp-regex][2], you can use the following:
 | argv  | | Used if no `argv` argument was provided; otherwise defaults to `process.argv` |
 | major | --major | Sets the option `type` for [gulp-regex][2] to `"major"`<sub>1</sub> |
 | minor | --minor | Sets the option `type` for [gulp-regex][2] to `"minor"`<sub>1</sub> |
+| new-version | --new-version _value_<br>-V _value_ | Gulp prints it's own version with `--version`, so this happened... |
+| only | --only _condition_ | Only bump files that match the condition. See [gulp-match](https://github.com/robrich/gulp-match) |
 | patch | --patch | Sets the option `type` for [gulp-regex][2] to `"patch"`<sub>1</sub> |
 | quiet | --quit | Flag to silence the summary. |
 | summary<sub>2</sub> | | A callback that by default prints the summary to the console. |
 | tag | --tag, --keepmetadata | Flag that enables the `keepmetadata` option for [gulp-regex][2]. |
-| new-version | --new-version _value_<br>-V _value_ | Gulp prints it's own version with `--version`, so this happened... |
 
 1. Only used if there's no `type` or `version` options
 2. Has a call signature of `(filename: string, results: {}) => void`

@@ -2,6 +2,7 @@
 
 const { color, log } = require( "@futagoza/cli-utils" );
 const bumpregex = require( "bump-regex" );
+const match = require( "gulp-match" );
 const parseArgv = require( "./lib/parseArgv" );
 const PluginError = require( "plugin-error" );
 const through = require( "through2" );
@@ -75,6 +76,7 @@ function bump( argv, options = {} ) {
 
         if ( file.isNull() ) return cb( null, file );
         if ( file.isStream() ) return cb( error( "Streaming not supported" ) );
+        if ( ! match( file, options.only || true ) ) return cb( null, file );
 
         options.str = String( file.contents );
         bumpregex( options, ( err, result ) => {
