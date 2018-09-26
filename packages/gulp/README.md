@@ -18,6 +18,12 @@ Will publish the NPM packages passed to it from Gulp.
 
 > See [@futagoza/gulp-publish-package](https://www.npmjs.com/package/@futagoza/gulp-publish-package) for more information.
 
+## import { colors, log } from "@futagoza/gulp"
+
+Provides colors and logging utilities for the console.
+
+> See [@futagoza/cli-utils](https://www.npmjs.com/package/@futagoza/cli-utils) for more information.
+
 -----
 
 [![History](https://img.shields.io/badge/github.com/futagoza/gulp-changelog-yellow.svg)](https://github.com/futagoza/gulp/blob/master/CHANGELOG.md)
