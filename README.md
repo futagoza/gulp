@@ -5,7 +5,7 @@ Plugins and functions for use with Gulp 4
 | [@futagoza/cli-utils][051] | [![release][052]][053] | [![dependencies][054]][055] |
 | [@futagoza/gulp][001] | [![release][002]][003] | [![dependencies][004]][005] |
 | [@futagoza/gulp-bump][011] | [![release][012]][013] | [![dependencies][014]][015] |
-| [@futagoza/node-publish-package][031] | [![release][032]][033] | [![dependencies][034]][035] |
+| [@futagoza/gulp-publish-package][031] | [![release][032]][033] | [![dependencies][034]][035] |
 | [@futagoza/node-run][021] | [![release][022]][023] | [![dependencies][024]][025] |
 | [@futagoza/publish-package][041] | [![release][042]][043] | [![dependencies][044]][045] |
 
