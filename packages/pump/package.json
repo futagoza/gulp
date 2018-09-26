@@ -1,0 +1,22 @@
+{
+    "name": "@futagoza/pump",
+    "version": "0.5.1",
+    "description": "A wrapper around pump to use promises and normal functions.",
+    "keywords": [
+        "streams",
+        "pump",
+        "Promise"
+    ],
+    "homepage": "https://github.com/futagoza/gulp",
+    "repository": "https://github.com/futagoza/gulp/tree/master/packages/pump",
+    "license": "MIT",
+    "author": "Futago-za Ryuu <futagoza.ryuu@gmail.com>",
+    "main": "index.js",
+    "dependencies": {
+        "@futagoza/create-stream": "0.5.x",
+        "pump": "3.0.0"
+    },
+    "engines": {
+        "node": ">= 6"
+    }
+}

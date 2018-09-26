@@ -1,0 +1,21 @@
+A wrapper around [pump](https://www.npmjs.com/org/pump) to use promises, as well as normal functions.
+
+```js
+const pump = require( "@futagoza/pump" );
+const fs = require( "fs" );
+
+const source = fs.promises.readFile( "./package.json", "utf8" );
+const getVersion = data => JSON.parse( data ).version;
+const dest = fs.createWriteStream( "./VERSION" );
+
+pump( source, getVersion, dest )
+    .then( () => console.log( "Done!" ) )
+    .catch( err => console.error( err ) );
+```
+
+-----
+
+[![History](https://img.shields.io/badge/github.com/futagoza/gulp-changelog-yellow.svg)](https://github.com/futagoza/gulp/blob/master/CHANGELOG.md)
+[![license](https://img.shields.io/badge/license-mit-blue.svg)](https://opensource.org/licenses/MIT)
+
+_@futagoza/node-run_ is Copyright (c) 2018+ Futago-za Ryuu

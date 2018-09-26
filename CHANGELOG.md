@@ -3,6 +3,7 @@
 ## next
 
 * Added `@futagoza/create-stream`, a non-gulp package
+* Added `@futagoza/pump`, an optional gulp package
 
 ## [v0.5.1](https://github.com/futagoza/gulp/compare/v0.5.0...v0.5.1) _(2018-09-26)_
 
