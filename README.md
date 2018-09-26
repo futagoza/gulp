@@ -2,11 +2,19 @@ Plugins and functions for use with Gulp 4
 
 | package | version | dependencies |
 | ------- | ------- | ------------ |
+| [@futagoza/cli-utils][051] | [![release][052]][053] | [![dependencies][054]][055] |
 | [@futagoza/gulp][001] | [![release][002]][003] | [![dependencies][004]][005] |
 | [@futagoza/gulp-bump][011] | [![release][012]][013] | [![dependencies][014]][015] |
 | [@futagoza/node-publish-package][031] | [![release][032]][033] | [![dependencies][034]][035] |
 | [@futagoza/node-run][021] | [![release][022]][023] | [![dependencies][024]][025] |
 | [@futagoza/publish-package][041] | [![release][042]][043] | [![dependencies][044]][045] |
+
+<!-- @futagoza/cli-utils -->
+[051]: https://github.com/futagoza/gulp/tree/master/packages/cli-utils
+[052]: https://img.shields.io/npm/v/@futagoza/cli-utils.svg
+[053]: https://www.npmjs.com/package/@futagoza/cli-utils
+[054]: https://img.shields.io/david/futagoza/gulp.svg?path=packages/cli-utils
+[055]: https://david-dm.org/futagoza/gulp?path=packages/cli-utils
 
 <!-- @futagoza/gulp -->
 [001]: https://github.com/futagoza/gulp/tree/master/packages/gulp
