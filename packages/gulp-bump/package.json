@@ -1,6 +1,6 @@
 {
     "name": "@futagoza/gulp-bump",
-    "version": "0.5.0",
+    "version": "0.5.1",
     "description": "Will bump the `version` field of any file passed to it from Gulp.",
     "keywords": [
         "gulp",

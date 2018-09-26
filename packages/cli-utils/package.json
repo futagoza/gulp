@@ -1,6 +1,6 @@
 {
     "name": "@futagoza/cli-utils",
-    "version": "0.5.0",
+    "version": "0.5.1",
     "description": "A set of function's for use in scripts that interact with the CLI.",
     "keywords": [
         "cli",

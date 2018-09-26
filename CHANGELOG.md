@@ -1,5 +1,9 @@
 > See the  [commit history](https://github.com/futagoza/gulp/commits/master) for a full list of changes.
 
+## [v0.5.1](https://github.com/futagoza/gulp/compare/v0.5.0...v0.5.1) _(2018-09-26)_
+
+* Fix: upgrade `@futagoza/*` dependencies from `0.4.x` to `0.5.x`
+
 ## [v0.5.0](https://github.com/futagoza/gulp/compare/v0.4.1...v0.5.0) _(2018-09-26)_
 
 * Clarify documentation
