@@ -17,8 +17,8 @@
     "author": "Futago-za Ryuu <futagoza.ryuu@gmail.com>",
     "main": "index.js",
     "dependencies": {
-        "@futagoza/cli-utils": "0.4.x",
-        "@futagoza/publish-package": "0.4.x",
+        "@futagoza/cli-utils": "0.5.x",
+        "@futagoza/publish-package": "0.5.x",
         "gulp-match": "1.0.3",
         "plugin-error": "1.0.1",
         "through2": "2.0.3"
