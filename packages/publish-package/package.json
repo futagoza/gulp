@@ -1,6 +1,6 @@
 {
     "name": "@futagoza/publish-package",
-    "version": "0.4.1",
+    "version": "0.5.0",
     "description": "A 'npm/yarn publish' wrapper with my preferred defaults.",
     "keywords": [
         "npm",
