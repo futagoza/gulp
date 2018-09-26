@@ -1,0 +1,23 @@
+{
+    "name": "@futagoza/create-stream",
+    "version": "0.5.1",
+    "description": "Helpers to create through2 streams from different types of functions.",
+    "keywords": [
+        "stream",
+        "transform",
+        "function",
+        "callback",
+        "Promise"
+    ],
+    "homepage": "https://github.com/futagoza/gulp",
+    "repository": "https://github.com/futagoza/gulp/tree/master/helpers/create-stream",
+    "license": "MIT",
+    "author": "Futago-za Ryuu <futagoza.ryuu@gmail.com>",
+    "main": "index.js",
+    "dependencies": {
+        "through2": "2.0.3"
+    },
+    "engines": {
+        "node": ">= 6"
+    }
+}
