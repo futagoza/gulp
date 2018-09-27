@@ -2,7 +2,7 @@
 
 const { existsSync } = require( "fs" );
 const { join } = require( "path" );
-const run = require( "@futagoza/node-run" );
+const { run } = require( "@futagoza/child-process" );
 const buildArgv = require( "./lib/buildArgv" );
 const generateCommand = require( "./lib/generateCommand" );
 const reject = require( "./lib/reject" );

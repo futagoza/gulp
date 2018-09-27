@@ -15,7 +15,7 @@
     "author": "Futago-za Ryuu <futagoza.ryuu@gmail.com>",
     "main": "index.js",
     "dependencies": {
-        "@futagoza/node-run": "0.5.x"
+        "@futagoza/child-process": "0.5.x"
     },
     "engines": {
         "node": ">= 6"

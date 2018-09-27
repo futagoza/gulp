@@ -8,9 +8,9 @@ Will bump the `version` field of any file passed to it from Gulp.
 
 ## @futagoza/gulp/exec
 
-Will run `child_process.spawn()` wrapped in a `Promise` that is only resolved when the spawned process closes. All output by default is sent to the current process via `options.stdio = "inherit"`.
+Will run `child_process.spawn()` wrapped in a `Promise`; Spawns a shell, executing the command inside the shell and buffering any generated output.
 
-> See [@futagoza/node-run](https://www.npmjs.com/package/@futagoza/node-run) for more information.
+> See [@futagoza/child-process](https://www.npmjs.com/package/@futagoza/child-process) for more information.
 
 ## @futagoza/gulp/publish
 

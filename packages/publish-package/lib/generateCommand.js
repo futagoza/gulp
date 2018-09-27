@@ -1,11 +1,6 @@
 "use strict";
 
 /**
- * Extension added to the publishing command.
- */
-const _ext = process.platform === "win32" ? ".cmd" : "";
-
-/**
  * Generate the command `npm` or `yarn`, based on the options.
  * 
  * @param {{}} options An options object passed to the callee, then passed here.
@@ -14,11 +9,11 @@ const _ext = process.platform === "win32" ? ".cmd" : "";
  */
 function generateCommand( options = {}, preference = "npm" ) {
 
-    if ( options.dry || options.dryRun || options[ "dry-run" ] ) return "npm" + _ext;
+    if ( options.dry || options.dryRun || options[ "dry-run" ] ) return "npm";
 
-    if ( options.yarn || options.newVersion || options[ "new-version" ] ) return "yarn" + _ext;
+    if ( options.yarn || options.newVersion || options[ "new-version" ] ) return "yarn";
 
-    return preference + ( preference.includes( "." ) ? "" : _ext );
+    return preference;
 
 }
 

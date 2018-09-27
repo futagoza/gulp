@@ -45,6 +45,7 @@ function publish( path?: string, options: {} ): Promise;
 | registry | --registry _url_ | See [https://docs.npmjs.com/misc/registry][3] |
 | reg | --registry _url_ | Alias for _registry_ |
 | restricted | --access _restricted_ | If `true`, uses `--access restricted` |
+| runOpts | | Option's to send to [@futagoza/node-run](https://www.npmjs.com/package/@futagoza/node-run) |
 | tag | --tag _name_ | See [https://docs.npmjs.com/cli/publish][1] |
 | version | --new-version _value_ | Alias for _new-version_ |
 | yarn | | Will use `yarn publish` instead of `npm publish` |

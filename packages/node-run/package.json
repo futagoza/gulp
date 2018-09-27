@@ -15,6 +15,9 @@
     "license": "MIT",
     "author": "Futago-za Ryuu <futagoza.ryuu@gmail.com>",
     "main": "index.js",
+    "dependencies": {
+        "@futagoza/child-process": "*"
+    },
     "engines": {
         "node": ">= 6"
     }

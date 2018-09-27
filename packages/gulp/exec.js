@@ -1,5 +1,5 @@
 "use strict";
 
-const run = require( "@futagoza/node-run" );
+const { exec } = require( "@futagoza/child-process" );
 
-module.exports = run;
+module.exports = exec;
