@@ -8,6 +8,7 @@
 * Set `@futagoza/gulp` to use `@futagoza/child-process`
 * Set `@futagoza/node-run` to use `@futagoza/child-process`
 * Set `@futagoza/publish-package` to use `@futagoza/child-process`
+* Added `@gulpx/api`
 
 ## [v0.5.1](https://github.com/futagoza/gulp/compare/v0.5.0...v0.5.1) _(2018-09-26)_
 

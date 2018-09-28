@@ -1,0 +1,29 @@
+{
+    "name": "@gulpx/api",
+    "version": "0.0.0",
+    "description": "A custom variant of the Gulp API to use with a gulpfile.js and @gulpx/cli",
+    "keywords": [
+        "stream",
+        "system",
+        "make",
+        "tool",
+        "pipeline",
+        "series",
+        "parallel",
+        "streaming",
+        "gulp"
+    ],
+    "homepage": "https://github.com/futagoza/gulp",
+    "repository": "https://github.com/futagoza/gulp/tree/master/packages/gulpx",
+    "license": "MIT",
+    "author": "Futago-za Ryuu <futagoza.ryuu@gmail.com>",
+    "main": "index.js",
+    "types": "index.d.ts",
+    "dependencies": {
+        "undertaker": "1.2.0",
+        "vinyl-fs": "3.0.3"
+    },
+    "engines": {
+        "node": ">= 6"
+    }
+}
