@@ -14,6 +14,7 @@ function p( ...args ) {
 
     if ( args.length < 1 ) return Promise.resolve();
     if ( args.length === 1 && Array.isArray( args[ 0 ] ) ) args = args[ 0 ];
+    if ( args.length === 1 ) args.push( () => void 0 );
 
     return new Promise( ( resolve, reject ) => {
 
