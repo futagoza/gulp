@@ -5,6 +5,8 @@
 const cs = require( "@futagoza/create-stream" );
 const pump = require( "pump" );
 
+const TYPE_ERROR = "Expecting a either a function, promise or stream, but got ";
+
 /**
  * Will wrap `pump` in a Promise, as well as change any promise's and functions to streams.
  *
@@ -21,7 +23,7 @@ function p( ...args ) {
         const streams = args.map( arg => {
 
             const T = typeof arg;
-            if ( T !== "function" && T !== "object" ) return arg;
+            if ( T !== "function" && T !== "object" ) return reject( new TypeError( TYPE_ERROR + T ) );
 
             if ( typeof arg.pipe === "function" ) return arg;
 

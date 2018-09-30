@@ -11,6 +11,7 @@
 * Added `@gulpx/api`
 * `@futagoza/pump` now accepts a single item
 * Added `@gulpx/cli`
+* `@futagoza/pump` only accepts a function, promise or stream
 
 ## [v0.5.1](https://github.com/futagoza/gulp/compare/v0.5.0...v0.5.1) _(2018-09-26)_
 
