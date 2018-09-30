@@ -3,7 +3,8 @@
     "private": true,
     "workspaces": [
         "gulpx/*",
-        "packages/*"
+        "packages/*",
+        "plugins/*"
     ],
     "scripts": {
         "lint": "gulp lint",

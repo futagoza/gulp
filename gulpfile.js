@@ -13,6 +13,7 @@ gulp.task( "lint", () => pump(
         "gulpx/cli/bin/gulpx",
         "gulpx/**/*.js",
         "packages/**/*.js",
+        "plugins/**/*.js",
         ".eslintrc.js",
         "gulpfile.js",
     ] ),
@@ -32,7 +33,7 @@ gulp.task( "bump:gulpx", () => pump(
 ) );
 
 // Bump the "version" field of every `package.json` in the packages directory
-gulp.task( "bump:plugins", () => pump(
+gulp.task( "bump:packages", () => pump(
 
     gulp.src( "packages/**/package.json" ),
     bump(),
@@ -40,13 +41,24 @@ gulp.task( "bump:plugins", () => pump(
 
 ) );
 
-gulp.task( "bump", gulp.series( "bump:gulpx", "bump:plugins" ) );
+// Bump the "version" field of every `package.json` in the plugins directory
+gulp.task( "bump:plugins", () => pump(
+
+    gulp.src( "plugins/**/package.json" ),
+    bump(),
+    gulp.dest( "plugins/" )
+
+) );
+
+// Bump everything (good idea?)
+gulp.task( "bump", gulp.series( "bump:gulpx", "bump:packages", "bump:plugins" ) );
 
 // Publish all the packages in this monorepo (versions should be synced before-hand)
 gulp.task( "publish", () => pump(
     gulp.src( [
         "gulpx/*",
         "packages/*",
+        "plugins/*",
     ] ),
     publish( )
 ) );
