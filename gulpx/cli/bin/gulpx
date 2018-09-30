@@ -1,0 +1,52 @@
+#!/usr/bin/env node
+
+"use strict";
+
+const { log, visitArgv } = require( "@futagoza/cli-utils" );
+const { main } = require( "../index" );
+
+const options = {};
+const tasks = [];
+
+visitArgv( process.argv.slice( 2 ), ( arg, nextArg ) => {
+
+    if ( arg === "--" ) {
+
+        options[ "--" ] = nextArg.rest();
+        return visitArgv.BREAK;
+
+    }
+
+    let value = arg.includes( "=" ) ? arg.split( "=" ) : void 0;
+    if ( value ) {
+
+        arg = value.shift();
+        value = value.join( "=" );
+
+    }
+
+    if ( arg.startsWith( "--" ) ) {
+
+        options[ arg.slice( 2 ) ] = value || nextArg.consume();
+
+    } else if ( arg.startsWith( "-" ) ) {
+
+        options[ arg.slice( 1 ) ] = value || true;
+
+    } else {
+
+        tasks.push( arg );
+
+    }
+
+} );
+
+main( { options, tasks } ).catch( err => {
+
+    err = err || "gulpx encountered an unkown error";
+    if ( ! err.stack && err.message ) err = err.message;
+
+    log.error( err );
+    process.exit( 1 );
+
+} );
