@@ -10,6 +10,7 @@
         "bump-major": "gulp bump --major",
         "bump-minor": "gulp bump --minor",
         "bump-patch": "gulp bump --patch",
+        "sync-versions": "sync-yarn-workspaces",
         "rollout": "gulp publish",
         "rollout-dry": "gulp publish --dry"
     },
