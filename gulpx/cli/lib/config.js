@@ -4,54 +4,50 @@ const { dirname } = require( "path" );
 const lookup = require( "./lookup" );
 
 /**
- * Returns a config that the __gulpx-cli__ will use while it is running.
+ * Returns a frozen config that __@gulpx/cli__ will use while it is running.
  * 
  * @param {{}} [settings] Config property defaults
- * @returns {{}} The resolved config.
  */
 function config( settings = {} ) {
 
     let autoDefault, root;
-    let { apifile, apiname, cwd, gulpfile, options, tasks } = settings;
+    let { clientfile, clientname, cwd, provider, options, requests } = settings;
 
     if ( typeof cwd !== "string" ) cwd = process.cwd();
     if ( typeof options !== "object" ) options = {};
-    if ( ! Array.isArray( tasks ) ) tasks = [];
-    if ( typeof gulpfile !== "string" ) gulpfile = lookup.gulpfile( cwd );
-    if ( gulpfile ) {
+    if ( ! Array.isArray( requests ) ) requests = [];
+    if ( typeof provider !== "string" ) provider = lookup.file( cwd );
+    if ( provider ) {
 
-        root = dirname( gulpfile );
+        root = dirname( provider );
 
-        if ( typeof apifile !== "string" ) {
+        if ( typeof clientfile !== "string" ) {
 
-            apifile = lookup.api( root );
-            if ( apifile ) {
-
-                apiname = apifile.name;
-                apifile = apifile.file;
-
-            }
+            const rmd = lookup.dependency( root );
+            clientname = rmd.name;
+            clientfile = rmd.file;
 
         }
 
     }
 
-    if ( tasks.length === 0 ) {
+    if ( requests.length === 0 ) {
 
         autoDefault = true;
-        tasks[ 0 ] = "default";
+        requests[ 0 ] = "default";
 
     }
 
-    return {
-        autoDefault: autoDefault === true,
-        apifile,
-        apiname,
-        gulpfile,
+    return Object.freeze( {
+        autodefault: autoDefault === true,
+        clientfile,
+        clientname,
+        cwd,
+        provider,
         options,
         root,
-        tasks,
-    };
+        requests,
+    } );
 
 }
 

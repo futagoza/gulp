@@ -3,7 +3,7 @@ An extreamlly stripped down and opinionated variant of the [Gulp CLI](https://ww
 ### Major Changes
 
 * Only looks for _gulpfile.js_ (case-insensitive)
-* Gulp API used can be either [gulp](https://www.npmjs.com/package/gulp) or [@gulpx/api](https://www.npmjs.com/package/@gulpx/api)
+* Gulp client used can be either [gulp](https://www.npmjs.com/package/gulp) or [@gulpx/api](https://www.npmjs.com/package/@gulpx/api)
 * No need to use [pump](https://www.npmjs.com/package/pump) or [@futagoza/pump](https://www.npmjs.com/package/@futagoza/pump), everything is passed to them directly.
 * Tasks can return either a stream, a promise or an array containing both as well as normal functions.
 
@@ -11,7 +11,7 @@ An extreamlly stripped down and opinionated variant of the [Gulp CLI](https://ww
 
 * _@gulpx/cli_ exports app via: `const { main, lookup } = require( "@gulpx/cli" );`
 * The app is Promise based, no need to `try..catch` it
-* You can pass paths to the Gulp API file to use, as well as a custom named `gulpfile.js` (e.g. `.tasks.js`)
+* You can pass resolved paths to a Gulp client file and a custom named `gulpfile.js` (e.g. `.tasks.js`)
 
 ### CLI
 

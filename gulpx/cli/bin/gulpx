@@ -6,7 +6,7 @@ const { log, visitArgv } = require( "@futagoza/cli-utils" );
 const { main } = require( "../index" );
 
 const options = {};
-const tasks = [];
+const requests = [];
 
 visitArgv( process.argv.slice( 2 ), ( arg, nextArg ) => {
 
@@ -35,13 +35,13 @@ visitArgv( process.argv.slice( 2 ), ( arg, nextArg ) => {
 
     } else {
 
-        tasks.push( arg );
+        requests.push( arg );
 
     }
 
 } );
 
-main( { options, tasks } ).catch( err => {
+main( { options, requests } ).catch( err => {
 
     err = err || "gulpx encountered an unkown error";
     if ( ! err.stack && err.message ) err = err.message;

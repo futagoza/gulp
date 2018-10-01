@@ -7,55 +7,52 @@ const resolve = require( "resolve-from" ).silent;
 const detectOpts = { "nocase": true };
 
 /**
- * Returns the nearest `gulpfile.js` to the given `cwd`, or returns nothing.
+ * Returns the nearest `filename` to the given `cwd`, or returns nothing.
  * 
  * @param {string} cwd The directory to start the search from.
- * @returns {string|void} The resolved `gulpfile.js` or `undefined`
+ * @param {string} [filename] The file to look for (defaults to __gulpfile.js__).
+ * @returns {string|void} The resolved path to `filename` or `undefined`
  */
-function gulpfile( cwd ) {
+function file( cwd, filename = "gulpfile.js" ) {
 
-    const filename = detect( join( cwd, "gulpfile.js" ), detectOpts );
-    if ( filename ) return filename;
+    const path = detect( join( cwd, filename ), detectOpts );
+    if ( path ) return path;
 
     const dir = dirname( cwd );
-    if ( dir !== cwd ) return gulpfile( dir );
+    if ( dir !== cwd ) return file( dir );
 
 }
 
 /**
- * Will attempt to resolve the modules __gulp__ or __@gulpx/api__ from `cwd`, and return the path
- * and name of the resolved API module.
+ * Will attempt to resolve one of the given `modules` from `cwd`, and return it's name along
+ * with the resolved path for the modules main file.
+ * 
+ * The default `modules` it looks for are __gulp__ and __@gulpx/api__
  * 
  * @param {string} cwd The directory to start the search from.
- * @returns {{file?:string,name?:string}} The resolved API.
+ * @param {string[]} [modules] An array of module names to search for.
+ * @returns {{file?:string,name?:string}} The resolved module.
  */
-function api( cwd ) {
+function dependency( cwd, modules = [ "gulp", "@gulpx/api" ] ) {
 
-    let apifile, apiname;
+    let file, name;
 
-    apifile = resolve( cwd, "gulp" );
-    if ( apifile ) {
+    for ( const module of modules ) {
 
-        apiname = "gulp";
+        file = resolve( cwd, module );
+        if ( file ) {
 
-    } else {
-
-        apifile = resolve( cwd, "@gulpx/api" );
-        if ( apifile ) {
-
-            apiname = "@gulpx/api";
+            name = module;
+            break;
 
         }
 
     }
 
-    return {
-        file: apifile,
-        name: apiname,
-    };
+    return { file, name };
 
 }
 
 // Export
 
-module.exports = { gulpfile, api };
+module.exports = { file, dependency };

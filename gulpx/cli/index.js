@@ -32,37 +32,37 @@ function main( settings = {} ) {
 
     }
 
-    const { autoDefault, apifile, apiname, gulpfile, options, root, tasks } = config( settings );
+    const { autodefault, clientfile, clientname, provider, options, root, requests } = config( settings );
 
-    if ( typeof gulpfile !== "string" ) return Promise.reject( PATH_ERROR( "'gulpfile.js'" ) );
-    if ( typeof apifile !== "string" ) return Promise.reject( PATH_ERROR( "Gulp API" ) + ` from ${ root }` );
+    if ( typeof provider !== "string" ) return Promise.reject( PATH_ERROR( "'gulpfile.js'" ) );
+    if ( typeof clientfile !== "string" ) return Promise.reject( PATH_ERROR( "Gulp client" ) + ` from ${ root }` );
 
-    let gulpApi;
+    let gulpClient;
     const unfinished = [];
 
     return series( [
 
         () => {
 
-            log.info( `Using gulpfile ${ color.magenta( gulpfile ) }`, apiname ? ` (${ apiname })` : "" );
+            log.info( `Using gulpfile ${ color.magenta( provider ) }`, clientname ? ` (${ clientname })` : "" );
 
-            gulpApi = require( apifile );
-            require( gulpfile );
+            gulpClient = require( clientfile );
+            require( provider );
 
         },
 
-        ...tasks.map( taskName => () => {
+        ...requests.map( taskName => () => {
 
             let hrtime;
 
             const task = new Promise( ( resolve, reject ) => {
 
-                const taskJob = gulpApi.task( taskName );
+                const taskJob = gulpClient.task( taskName );
 
-                if ( gulpApi.lastRun( taskName ) ) return resolve( DONE_SYMBOL );
+                if ( gulpClient.lastRun( taskName ) ) return resolve( DONE_SYMBOL );
                 if ( ! taskJob ) {
 
-                    if ( autoDefault ) return reject( "gulpx-cli > No tasks were found." );
+                    if ( autodefault ) return reject( "gulpx-cli > No tasks were found." );
                     return reject( `gulpx ${ taskName } is not a registered task.` );
 
                 }
