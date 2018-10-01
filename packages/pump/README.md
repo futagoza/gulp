@@ -1,4 +1,9 @@
-A wrapper around [pump](https://www.npmjs.com/org/pump) to use promises, as well as normal functions.
+A wrapper around [pump](https://www.npmjs.com/org/pump) that:
+
+* returns a promise
+* accepts the use of promises, as well as normal functions
+* accepts a single item
+* only allows a function, promise or stream to be passed
 
 ```js
 const pump = require( "@futagoza/pump" );
@@ -18,4 +23,4 @@ pump( source, getVersion, dest )
 [![History](https://img.shields.io/badge/github.com/futagoza/gulp-changelog-yellow.svg)](https://github.com/futagoza/gulp/blob/master/CHANGELOG.md)
 [![license](https://img.shields.io/badge/license-mit-blue.svg)](https://opensource.org/licenses/MIT)
 
-_@futagoza/node-run_ is Copyright (c) 2018+ Futago-za Ryuu
+_@futagoza/pump_ is Copyright (c) 2018+ Futago-za Ryuu
