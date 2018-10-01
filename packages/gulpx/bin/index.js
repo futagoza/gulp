@@ -1,22 +1,22 @@
 "use strict";
 
 const { color, log } = require( "@futagoza/cli-utils" );
-const config = require( "./lib/config" );
-const isPromise = require( "./lib/isPromise" );
-const isStream = require( "./lib/isStream" );
-const lookup = require( "./lib/lookup" );
+const config = require( "./config" );
+const isPromise = require( "./isPromise" );
+const isStream = require( "./isStream" );
+const lookup = require( "./lookup" );
 const pump = require( "@futagoza/pump" );
 const pretty = require( "pretty-hrtime" );
 const series = require( "p-series" );
 
 const DONE_SYMBOL = Symbol( "gulpx task done" );
-const PATH_ERROR = T => `gulpx-cli > The resolved path to a ${ T } is required`;
+const PATH_ERROR = T => `gulpx > The resolved path to a ${ T } is required`;
 
 /**
  * Will execute Gulp tasks (set in the _settings_) in a encapsulated Promise.
  * 
  * __NOTE:__ If `settings` is given a _string_-type property called `config`, it will be presumed
- * that this is a resolved path to a config with default settings for _@gulpx/cli_
+ * that this is a resolved path to a config with default settings for _@futagoza/gulpx_
  * 
  * @param {{}} [settings] Config property defaults
  */
@@ -62,7 +62,7 @@ function main( settings = {} ) {
                 if ( gulpClient.lastRun( taskName ) ) return resolve( DONE_SYMBOL );
                 if ( ! taskJob ) {
 
-                    if ( autodefault ) return reject( "gulpx-cli > No tasks were found." );
+                    if ( autodefault ) return reject( "gulpx > No tasks were found." );
                     return reject( `gulpx ${ taskName } is not a registered task.` );
 
                 }

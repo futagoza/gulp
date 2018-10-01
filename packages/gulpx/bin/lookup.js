@@ -27,13 +27,13 @@ function file( cwd, filename = "gulpfile.js" ) {
  * Will attempt to resolve one of the given `modules` from `cwd`, and return it's name along
  * with the resolved path for the modules main file.
  * 
- * The default `modules` it looks for are __gulp__ and __@gulpx/api__
+ * The default `modules` it looks for are __gulp__ and __@futagoza/gulpx__
  * 
  * @param {string} cwd The directory to start the search from.
  * @param {string[]} [modules] An array of module names to search for.
  * @returns {{file?:string,name?:string}} The resolved module.
  */
-function dependency( cwd, modules = [ "gulp", "@gulpx/api" ] ) {
+function dependency( cwd, modules = [ "gulp", "@futagoza/gulpx" ] ) {
 
     let file, name;
 

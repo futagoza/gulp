@@ -3,7 +3,7 @@
 "use strict";
 
 const { log, visitArgv } = require( "@futagoza/cli-utils" );
-const { main } = require( "../index" );
+const { main } = require( "./index" );
 
 const options = {};
 const requests = [];

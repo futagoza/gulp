@@ -4,7 +4,7 @@ const { dirname } = require( "path" );
 const lookup = require( "./lookup" );
 
 /**
- * Returns a frozen config that __@gulpx/cli__ will use while it is running.
+ * Returns a frozen config that cli for __@futagoza/gulpx__ will use while it is running.
  * 
  * @param {{}} [settings] Config property defaults
  */

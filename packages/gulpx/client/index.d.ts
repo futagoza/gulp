@@ -5,7 +5,7 @@ import * as vfs from "vinyl-fs";
 interface Gulp extends Undertaker {
 
     /**
-     * Create's a new instance of `@gulpx/api`
+     * Create's a new instance of the `@futagoza/gulpx` client
      * 
      * @param registry Instance of an existing Undertaker registry.
      */
