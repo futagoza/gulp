@@ -67,7 +67,7 @@ lookup.dependency( cwd, modules )
 main( settings );
 ```
 
-* No need to use [pump](https://www.npmjs.com/package/pump) or [@futagoza/pump](https://www.npmjs.com/package/@futagoza/pump), everything is passed to them directly.
+* No need to use [pump](https://www.npmjs.com/package/pump) or [@futagoza/pump](https://www.npmjs.com/package/@futagoza/pump), just return an array and everything is passed to them directly.
 * Tasks can return either a stream, a promise or an array containing both as well as normal functions.
 * The app is Promise based, no need to `try..catch` it
 

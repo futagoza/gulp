@@ -2,8 +2,7 @@
 
 const { color, log } = require( "@futagoza/cli-utils" );
 const config = require( "./config" );
-const isPromise = require( "./isPromise" );
-const isStream = require( "./isStream" );
+const asyncDone = require( "async-done" );
 const lookup = require( "./lookup" );
 const pump = require( "@futagoza/pump" );
 const pretty = require( "pretty-hrtime" );
@@ -38,7 +37,7 @@ function main( settings = {} ) {
     if ( typeof clientfile !== "string" ) return Promise.reject( PATH_ERROR( "Gulp client" ) + ` from ${ root }` );
 
     let gulpClient;
-    const unfinished = [];
+    const finished = {};
 
     return series( [
 
@@ -68,7 +67,7 @@ function main( settings = {} ) {
                 }
                 if ( typeof taskJob !== "function" ) return resolve( DONE_SYMBOL );
 
-                function done( err ) {
+                function finish( err ) {
 
                     err ? reject( err ) : resolve( DONE_SYMBOL );
 
@@ -77,39 +76,23 @@ function main( settings = {} ) {
                 log.info( `Starting '${ color.cyanBright( taskName ) }'...` );
                 hrtime = process.hrtime();
 
-                let job;
-                try {
+                asyncDone( done => {
 
-                    job = taskJob( done, options );
+                    let job = taskJob( done, options );
 
-                } catch ( ex ) {
+                    if ( Array.isArray( job ) ) job = pump( job );
 
-                    return reject( ex );
+                    return job;
 
-                }
-
-                if ( isPromise( job ) )
-
-                    job
-                        .catch( done )
-                        .then( () => done() );
-
-                else if ( isStream( job ) || Array.isArray( job ) )
-
-                    pump( job )
-                        .catch( done )
-                        .then( () => done() );
+                }, finish );
 
             } );
 
             return task.then( result => {
 
-                if ( result !== DONE_SYMBOL ) {
+                if ( result !== DONE_SYMBOL ) return void 0;
 
-                    unfinished.push( taskName );
-                    return void 0;
-
-                }
+                finished[ taskName ] = true;
 
                 hrtime = pretty( process.hrtime( hrtime ) );
                 log.info( `Finished '${ color.cyanBright( taskName ) }' after ${ color.magenta( hrtime ) }` );
@@ -120,7 +103,19 @@ function main( settings = {} ) {
 
         () => {
 
-            if ( unfinished.length < 1 ) return void 0;
+            const finishedCount = Object.keys( finished ).length;
+            const requestedCount = requests.length;
+
+            log.info( `Done ${ color.blue( finishedCount ) } of ${ color.green( requestedCount ) } tasks.` );
+
+            if ( finishedCount === requestedCount ) return void 0;
+
+            const unfinished = [];
+            requests.forEach( request => {
+
+                if ( ! finished[ request ] ) unfinished.push( request );
+
+            } );
 
             // `Promise.reject()` here instead?
             log.warning( color.red( "The following tasks did not complete:" ), color.cyanBright( unfinished.join( ", " ) ) );
