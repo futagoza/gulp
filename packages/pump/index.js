@@ -2,8 +2,9 @@
 
 "use strict";
 
+const asyncDone = require( "async-done" );
 const cs = require( "@futagoza/create-stream" );
-const pump = require( "pump" );
+const pump = require( "readable-stream" ).pipeline;
 
 const TYPE_ERROR = "Expecting a either a function, promise or stream, but got ";
 
@@ -31,14 +32,13 @@ function p( ...args ) {
 
         } );
 
-        streams.push( err => {
+        function finish( err, res ) {
 
-            if ( err ) return reject( err );
-            resolve();
+            err ? reject( err ) : resolve( res );
 
-        } );
+        }
 
-        pump( ...streams );
+        asyncDone( done => pump( ...streams, done ), finish );
 
     } );
 
