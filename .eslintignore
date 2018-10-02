@@ -1,0 +1,2 @@
+# Ignore node_modules within the workspace dirs
+node_modules
