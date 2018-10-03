@@ -4,16 +4,16 @@
 
 const asyncDone = require( "async-done" );
 const cs = require( "@futagoza/create-stream" );
-const pump = require( "readable-stream" ).pipeline;
+const pipeline = require( "readable-stream" ).pipeline;
 
 const TYPE_ERROR = "Expecting a either a function, promise or stream, but got ";
 
 /**
- * Will wrap `pump` in a Promise, as well as change any promise's and functions to streams.
+ * Will wrap `stream.pipeline` in a Promise, as well as change any promise's and functions to streams.
  *
  * @param {...Function} args Streams, functions and promises.
  */
-function p( ...args ) {
+function pump( ...args ) {
 
     if ( args.length < 1 ) return Promise.resolve();
     if ( args.length === 1 && Array.isArray( args[ 0 ] ) ) args = args[ 0 ];
@@ -38,7 +38,7 @@ function p( ...args ) {
 
         }
 
-        asyncDone( done => pump( ...streams, done ), finish );
+        asyncDone( done => pipeline( ...streams, done ), finish );
 
     } );
 
@@ -46,7 +46,7 @@ function p( ...args ) {
 
 // Exports
 
-module.exports = p;
-module.exports.default = p;
-module.exports.p = p;
+module.exports = pump;
+module.exports.default = pump;
+module.exports.pipeline = pipeline;
 module.exports.pump = pump;

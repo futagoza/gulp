@@ -1,4 +1,4 @@
-A wrapper around [pump](https://www.npmjs.com/org/pump) that:
+A wrapper around [stream.pipeline](https://nodejs.org/dist/latest-v10.x/docs/api/stream.html#stream_stream_pipeline_streams_callback) (based on [pump](https://www.npmjs.com/package/pump)) that:
 
 * returns a promise
 * accepts the use of promises, as well as normal functions
