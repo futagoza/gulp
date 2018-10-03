@@ -31,6 +31,7 @@ class Gulp extends Undertaker {
 
     }
 
+    // Modified to handle tasks that return arrays
     task( taskName, fn ) {
 
         if ( typeof taskName === "function" ) {
@@ -51,6 +52,7 @@ class Gulp extends Undertaker {
 
     }
 
+    // Wrapper for `vfs.src( globs, { read: false } )`
     path( globs, opt ) {
 
         if ( opt === null ) opt = {};

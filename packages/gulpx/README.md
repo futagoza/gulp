@@ -2,6 +2,8 @@ Custom variants of the [Gulp client](https://www.npmjs.com/package/gulp) (to use
 
 ## client
 
+> For a better understanding of the API, take a look at the [TypeScript definition file](https://github.com/futagoza/gulp/blob/master/packages/gulpx/client/index.d.ts).
+
 ```js
 const gulp = require( "@futagoza/gulpx" );
 
@@ -14,15 +16,23 @@ gulp.parallel
 gulp.registry
 gulp.src
 gulp.symlink
-gulp.task
 gulp.tree
+
+// Modified
+gulp.task
 
 // Added
 gulp.path
+gulp.pipeline
+gulp.pump
 
 // Removed
 gulp.watch
 ```
+
+* No need to use [pump](https://www.npmjs.com/package/pump), [stream.pipeline](https://nodejs.org/dist/latest-v10.x/docs/api/stream.html#stream_stream_pipeline_streams_callback) or [@futagoza/pump](https://www.npmjs.com/package/@futagoza/pump) when using `gulp.task`, just return an array
+* No need to use `gulp.src` with `{ read: false }`; with `gulp.path`, the `read` option is always `false`
+* Exports both _pipeline_ and _pump_ from [@futagoza/pump](https://www.npmjs.com/package/@futagoza/pump), so no need to include in your _package.json_
 
 ## cli
 
@@ -63,13 +73,13 @@ lookup.file( cwd, filename )
 // Will attempt to resolve one of the given `modules` from `cwd`
 lookup.dependency( cwd, modules )
 
-// Will execute Gulp tasks in a encapsulated Promise
+// Will execute Gulp tasks in a Promise, so no need to `try..catch` it
 main( settings );
 ```
 
-* No need to use [pump](https://www.npmjs.com/package/pump) or [@futagoza/pump](https://www.npmjs.com/package/@futagoza/pump), just return an array and everything is passed to them directly.
-* Tasks can return either a stream, a promise or an array containing both as well as normal functions.
-* The app is Promise based, no need to `try..catch` it
+* Exported by default from `@futagoza/gulpx/bin/index.js` (API usage is the above JavaScript example)
+* Always runs the requested tasks in _series_
+* Displays the number of requested tasks completed at the end
 
 > __NOTE:__ The _@futagoza/gulpx_ CLI has no option or flag of its own, and no task listing functionality.
 
