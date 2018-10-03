@@ -16,8 +16,7 @@
     },
     "devDependencies": {
         "eslint-config-futagozaryuu": "5",
-        "gulp-eslint": "5.0.0",
-        "pump": "3.0.0"
+        "gulp-eslint": "5.0.0"
     },
     "engines": {
         "node": ">= 6"

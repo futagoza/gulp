@@ -1,15 +1,14 @@
 "use strict";
 
-const gulp = require( "@futagoza/gulpx" );
-const bump = require( "@futagoza/gulp/bump" );
+const { dest, series, src, task } = require( "@futagoza/gulpx" );
+const bump = require( "@futagoza/gulp-bump" );
 const eslint = require( "gulp-eslint" );
-const publish = require( "@futagoza/gulp/publish" );
-const pump = require( "pump" );
+const publish = require( "@futagoza/gulp-publish-package" );
 
 // Run ESLint on all JavaScript files.
-gulp.task( "lint", () => pump(
+task( "lint", () => [
 
-    gulp.src( [
+    src( [
         "packages/gulpx/bin/gulpx",
         "packages/**/*.js",
         "plugins/**/*.js",
@@ -20,34 +19,36 @@ gulp.task( "lint", () => pump(
     eslint.format(),
     eslint.failAfterError()
 
-) );
+] );
 
 // Bump the "version" field of every `package.json` in the packages directory
-gulp.task( "bump:packages", () => pump(
+task( "bump:packages", () => [
 
-    gulp.src( "packages/**/package.json" ),
+    src( "packages/**/package.json" ),
     bump(),
-    gulp.dest( "packages/" )
+    dest( "packages/" )
 
-) );
+] );
 
 // Bump the "version" field of every `package.json` in the plugins directory
-gulp.task( "bump:plugins", () => pump(
+task( "bump:plugins", () => [
 
-    gulp.src( "plugins/**/package.json" ),
+    src( "plugins/**/package.json" ),
     bump(),
-    gulp.dest( "plugins/" )
+    dest( "plugins/" )
 
-) );
+] );
 
 // Bump everything (good idea?)
-gulp.task( "bump", gulp.series( "bump:packages", "bump:plugins" ) );
+task( "bump", series( "bump:packages", "bump:plugins" ) );
 
 // Publish all the packages in this monorepo (versions should be synced before-hand)
-gulp.task( "publish", () => pump(
-    gulp.src( [
+task( "publish", () => [
+
+    src( [
         "packages/*",
         "plugins/*",
     ] ),
-    publish( )
-) );
+    publish()
+
+] );
