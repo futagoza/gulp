@@ -12,6 +12,7 @@
     "license": "MIT",
     "author": "Futago-za Ryuu <futagoza.ryuu@gmail.com>",
     "main": "index.js",
+    "types": "index.d.ts",
     "dependencies": {
         "@futagoza/create-stream": "0.5.x",
         "async-done": "1.3.1",
