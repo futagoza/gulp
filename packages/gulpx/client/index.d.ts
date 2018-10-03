@@ -1,6 +1,18 @@
+import { pump, pipeline } from "@futagoza/pump";
 import * as Registry from "undertaker-registry";
 import * as Undertaker from "undertaker";
 import * as vfs from "vinyl-fs";
+
+namespace gulpx {
+
+    /**
+     * An interface that describes the functions used by `gulpx.task`
+     */
+    interface TaskFunction extends Undertaker.TaskFunction {
+        ( done: ( error?: any ) => void, options: {} ): void | Duplex | NodeJS.Process | Promise<never> | any;
+    }
+
+}
 
 interface Gulp extends Undertaker {
 
@@ -43,6 +55,27 @@ interface Gulp extends Undertaker {
      * @param opts Options to pass to node-glob through glob-stream.
      */
     path: typeof vfs.src;
+
+    /**
+     * Register the task by the given _taskName_.
+     * 
+     * When the task is executed and it returns an array, the array will be passed to
+     * `@futagoza/pump`, and handled by it's promised pipeline.
+     * 
+     * @param taskName - Task name.
+     * @param fn - Task function.
+     */
+    task( taskName: string, fn: gulpx.TaskFunction ): void;
+
+    /**
+     * Pipe streams together and close all of them if one of them closes.
+     */
+    pipeline: typeof pipeline;
+
+    /**
+     * Will wrap `pump` in a Promise, as well as change any promise's and functions to streams.
+     */
+    pump: typeof pump;
 
 }
 

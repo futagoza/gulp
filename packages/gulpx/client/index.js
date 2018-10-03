@@ -1,5 +1,6 @@
 "use strict";
 
+const pump = require( "@futagoza/pump" );
 const Undertaker = require( "undertaker" );
 const vfs = require( "vinyl-fs" );
 
@@ -25,6 +26,28 @@ class Gulp extends Undertaker {
         this.dest = vfs.dest;
         this.src = vfs.src;
         this.symlink = vfs.symlink;
+        this.pipeline = pump.pipeline;
+        this.pump = pump.pump;
+
+    }
+
+    task( taskName, fn ) {
+
+        if ( typeof taskName === "function" ) {
+
+            fn = taskName;
+            taskName = fn.displayName || fn.name;
+
+        }
+
+        if ( ! fn ) return this._getTask( taskName );
+
+        this._setTask( taskName, ( done, options ) => {
+
+            const job = fn( done, options );
+            return Array.isArray( job ) ? pump( job ) : job;
+
+        } );
 
     }
 

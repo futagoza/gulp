@@ -4,7 +4,6 @@ const { color, log } = require( "@futagoza/cli-utils" );
 const config = require( "./config" );
 const asyncDone = require( "async-done" );
 const lookup = require( "./lookup" );
-const pump = require( "@futagoza/pump" );
 const pretty = require( "pretty-hrtime" );
 const series = require( "p-series" );
 
@@ -76,15 +75,7 @@ function main( settings = {} ) {
                 log.info( `Starting '${ color.cyanBright( taskName ) }'...` );
                 hrtime = process.hrtime();
 
-                asyncDone( done => {
-
-                    let job = taskJob( done, options );
-
-                    if ( Array.isArray( job ) ) job = pump( job );
-
-                    return job;
-
-                }, finish );
+                asyncDone( done => taskJob( done, options ), finish );
 
             } );
 
