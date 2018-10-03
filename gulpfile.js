@@ -24,7 +24,12 @@ task( "lint", () => [
 // Bump the "version" field of every `package.json` in the packages directory
 task( "bump:packages", () => [
 
-    src( "packages/**/package.json" ),
+    src( [
+
+        "packages/**/package.json",
+        "!**/node_modules/*/package.json",
+
+    ] ),
     bump(),
     dest( "packages/" )
 
