@@ -30,7 +30,7 @@ function main( settings = {} ) {
 
     }
 
-    const { autodefault, clientfile, clientname, provider, options, root, requests } = config( settings );
+    const { autodefault, clientfile, clientname, provider, root, requests } = config( settings );
 
     if ( typeof provider !== "string" ) return Promise.reject( PATH_ERROR( "'gulpfile.js'" ) );
     if ( typeof clientfile !== "string" ) return Promise.reject( PATH_ERROR( "Gulp client" ) + ` from ${ root }` );
@@ -75,7 +75,7 @@ function main( settings = {} ) {
                 log.info( `Starting '${ color.cyanBright( taskName ) }'...` );
                 hrtime = process.hrtime();
 
-                asyncDone( done => taskJob( done, options ), finish );
+                asyncDone( taskJob, finish );
 
             } );
 

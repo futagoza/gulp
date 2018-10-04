@@ -11,10 +11,9 @@ const lookup = require( "./lookup" );
 function config( settings = {} ) {
 
     let autoDefault, root;
-    let { clientfile, clientname, cwd, provider, options, requests } = settings;
+    let { clientfile, clientname, cwd, provider, requests } = settings;
 
     if ( typeof cwd !== "string" ) cwd = process.cwd();
-    if ( typeof options !== "object" ) options = {};
     if ( ! Array.isArray( requests ) ) requests = [];
     if ( typeof provider !== "string" ) provider = lookup.file( cwd );
     if ( provider ) {
@@ -44,7 +43,6 @@ function config( settings = {} ) {
         clientname,
         cwd,
         provider,
-        options,
         root,
         requests,
     } );

@@ -43,9 +43,9 @@ class Gulp extends Undertaker {
 
         if ( ! fn ) return this._getTask( taskName );
 
-        this._setTask( taskName, ( done, options ) => {
+        this._setTask( taskName, done => {
 
-            const job = fn( done, options );
+            const job = fn( done );
             return Array.isArray( job ) ? pump( job ) : job;
 
         } );

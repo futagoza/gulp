@@ -2,46 +2,21 @@
 
 "use strict";
 
-const { log, visitArgv } = require( "@futagoza/cli-utils" );
+const { log } = require( "@futagoza/cli-utils" );
 const { main } = require( "./index" );
 
-const options = {};
+const argv = process.argv.slice( 2 );
 const requests = [];
 
-visitArgv( process.argv.slice( 2 ), ( arg, nextArg ) => {
+for ( const arg of argv ) {
 
-    if ( arg === "--" ) {
+    if ( arg.startsWith( "-" ) ) break;
 
-        options[ "--" ] = nextArg.rest();
-        return visitArgv.BREAK;
+    requests.push( arg );
 
-    }
+}
 
-    let value = arg.includes( "=" ) ? arg.split( "=" ) : void 0;
-    if ( value ) {
-
-        arg = value.shift();
-        value = value.join( "=" );
-
-    }
-
-    if ( arg.startsWith( "--" ) ) {
-
-        options[ arg.slice( 2 ) ] = value || nextArg.consume();
-
-    } else if ( arg.startsWith( "-" ) ) {
-
-        options[ arg.slice( 1 ) ] = value || true;
-
-    } else {
-
-        requests.push( arg );
-
-    }
-
-} );
-
-main( { options, requests } ).catch( err => {
+main( { requests } ).catch( err => {
 
     err = err || "gulpx encountered an unkown error";
     if ( ! err.stack && err.message ) err = err.message;

@@ -3,17 +3,6 @@ import * as Registry from "undertaker-registry";
 import * as Undertaker from "undertaker";
 import * as vfs from "vinyl-fs";
 
-namespace gulpx {
-
-    /**
-     * An interface that describes the functions used by `gulpx.task`
-     */
-    interface TaskFunction extends Undertaker.TaskFunction {
-        ( done: ( error?: any ) => void, options: {} ): void | Duplex | NodeJS.Process | Promise<never> | any;
-    }
-
-}
-
 interface Gulp extends Undertaker {
 
     /**
@@ -65,7 +54,7 @@ interface Gulp extends Undertaker {
      * @param taskName - Task name.
      * @param fn - Task function.
      */
-    task( taskName: string, fn: gulpx.TaskFunction ): void;
+    task( taskName: string, fn: Undertaker.TaskFunction ): void;
 
     /**
      * Pipe streams together and close all of them if one of them closes.
