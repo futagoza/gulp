@@ -1,6 +1,6 @@
 {
     "name": "@futagoza/create-stream",
-    "version": "0.5.1",
+    "version": "1.0.0",
     "description": "Helpers to create through2 streams from different types of functions.",
     "keywords": [
         "stream",
