@@ -1,6 +1,6 @@
 {
     "name": "@futagoza/sync-yarn-workspaces",
-    "version": "0.5.1",
+    "version": "1.0.0",
     "description": "Will sync the version of any dependency that is also a workspace package.",
     "keywords": [
         "sync",
@@ -17,12 +17,12 @@
     "main": "index.js",
     "bin": "cli.js",
     "dependencies": {
+        "@futagoza/cli-utils": "^1.5.1",
         "get-yarn-workspaces": "1.0.2",
         "json-parse-better-errors": "1.0.2",
         "detect-indent": "5.0.0",
         "detect-newline": "2.1.0",
         "semver": "5.5.1",
-        "@futagoza/cli-utils": "0.5.x",
         "stringify-package": "1.0.0",
         "dir-resolve": "1.0.2"
     },
