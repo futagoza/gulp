@@ -1,6 +1,6 @@
 {
     "name": "@futagoza/gulp-publish-package",
-    "version": "0.5.1",
+    "version": "0.6.0",
     "description": "Will publish the NPM/Yarn packages passed to it from Gulp",
     "keywords": [
         "gulp",
@@ -12,13 +12,13 @@
         "release"
     ],
     "homepage": "https://github.com/futagoza/gulp",
-    "repository": "https://github.com/futagoza/gulp/tree/master/packages/gulp-publish-package",
+    "repository": "https://github.com/futagoza/gulp/tree/master/plugins/gulp-publish-package",
     "license": "MIT",
     "author": "Futago-za Ryuu <futagoza.ryuu@gmail.com>",
     "main": "index.js",
     "dependencies": {
-        "@futagoza/cli-utils": "0.5.x",
-        "@futagoza/publish-package": "0.5.x",
+        "@futagoza/cli-utils": "^1.5.1",
+        "@futagoza/publish-package": "^1.6.0",
         "plugin-error": "1.0.1",
         "through2": "2.0.3",
         "to-regex": "3.0.2"
