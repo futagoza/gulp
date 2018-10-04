@@ -1,6 +1,6 @@
 {
     "name": "@futagoza/publish-package",
-    "version": "0.5.1",
+    "version": "1.6.0",
     "description": "A 'npm/yarn publish' wrapper with my preferred defaults.",
     "keywords": [
         "npm",
@@ -15,7 +15,7 @@
     "author": "Futago-za Ryuu <futagoza.ryuu@gmail.com>",
     "main": "index.js",
     "dependencies": {
-        "@futagoza/child-process": "0.5.x"
+        "@futagoza/child-process": "^1.0.0"
     },
     "engines": {
         "node": ">= 6"
