@@ -20,7 +20,8 @@
 * Updated `@futagoza/gulp-publish-package` to use the new `checkVersion` option
 * Updated the behavior of the `--only` option for `@futagoza/gulp-*`
 * Added the `--ignore` flag to `@futagoza/gulp-*`
-* Updated documentation for some `@futagoza/*` packages 
+* Updated documentation for some `@futagoza/*` packages
+* Released  _@futagoza/child-process v1.0.0_
 
 ## [v0.5.1](https://github.com/futagoza/gulp/compare/v0.5.0...v0.5.1) _(2018-09-26)_
 
