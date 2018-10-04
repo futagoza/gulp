@@ -4,16 +4,17 @@ A 'npm/yarn publish' API wrapper with my preferred defaults that returns a promi
 * run either Yarn (`option.yarn = true`) or NPM (default)
 * perfect for embedding into your build scripts (Gulp anyone?)
 * `--access public` by default (publishing scoped packages is simpler)
+* optionally checks if package version is already on NPM
 
 ### example
 
 ```js
 const publish = require( "@futagoza/publish-package" );
 
-publish( __dirname, { dry: true } )
-    .catch( err => {
+publish( __dirname, { checkVersion: true } )
+    .catch( details => {
 
-        console.error( err );
+        console.error( details.stderr );
         process.exit( 1 );
 
     } )
@@ -29,6 +30,7 @@ function publish( path?: string, options: {} ): Promise;
 | api option | npm/yarn cli option | description |
 | ---------- | ------------------- | ---------------- |
 | access | --access _scope_ | See [https://docs.npmjs.com/cli/publish][1] |
+| checkVersion | | Will check on NPM before publishing |
 | dir | | Alternative to the _path_ argument<sub>1</sub> |
 | dry-run | --dry-run | See [https://docs.npmjs.com/cli/publish][1] |
 | dry | --dry-run | Alias for _dry-run_ |

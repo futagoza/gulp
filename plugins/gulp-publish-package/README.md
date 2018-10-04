@@ -6,6 +6,7 @@ Will publish the NPM or Yarn packages passed to it from Gulp.
 * perfect for publishing monorepo packages in sync without the use of Lerna
 * shorter aliases for some flags and options 
 * will use NPM by default, but can use Yarn instead (`option.yarn = true` or `--yarn`)
+* optionally checks if package version is already on NPM
 
 ### example
 
@@ -41,6 +42,8 @@ The following are CLI options that can be used either in place of them, or to ov
 | api option | cli option | npm/yarn option |
 | ---------- | ---------- | ---------------- |
 | access | --access _scope_ | --access _scope_ |
+| check-version | --check-version | |
+| checkVersion | --checkVersion | |
 | dry-run | --dry-run | --dry-run |
 | dry | --dry | --dry-run |
 | dryRun | --dryRun | --dry-run |

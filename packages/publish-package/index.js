@@ -2,7 +2,7 @@
 
 const { existsSync } = require( "fs" );
 const { join } = require( "path" );
-const { run } = require( "@futagoza/child-process" );
+const { exec, run } = require( "@futagoza/child-process" );
 const buildArgv = require( "./lib/buildArgv" );
 const generateCommand = require( "./lib/generateCommand" );
 const reject = require( "./lib/reject" );
@@ -24,6 +24,8 @@ function publish( path, options = {} ) {
 
     }
     options = Object.assign( {}, options );
+
+    const log = typeof options.log === "function" ? options.log : () => void 0;
 
     if ( ! path ) return reject( new Error( "No path specified to publish" ) );
     if ( ! existsSync( join( path, "package.json" ) ) ) {
@@ -87,9 +89,37 @@ function publish( path, options = {} ) {
     const runOpts = { cwd: path };
 
     if ( typeof options.runOpts === "object" ) Object.assign( runOpts, options.runOpts );
-    if ( typeof options.log === "function" ) options.log( path, command, args, runOpts );
+    log( path, command, args, runOpts );
 
-    return run( command, args, runOpts );
+    if ( ! options.checkVersion ) return run( command, args, runOpts );
+
+    const { name, version } = require( join( path, "package.json" ) );
+
+    return exec( `npm view ${ name } version`, runOpts )
+        .then( ( { stdout } ) => {
+
+            // Existing package has a newer local version?
+            if ( version === stdout.trim() ) {
+
+                log( `${ name } ${ version } already exists.` );
+                return Promise.resolve();
+
+            }
+
+            return run( command, args, runOpts );
+
+        } )
+        .catch( error => {
+
+            if ( typeof error !== "object" ) return Promise.reject( error );
+            if ( typeof error.stderr !== "string" ) return Promise.reject( error );
+
+            // Does this local package exist on the NPM registry?
+            if ( ! error.stderr.includes( "404" ) ) return Promise.reject( error );
+
+            return run( command, args, runOpts );
+
+        } );
 
 }
 

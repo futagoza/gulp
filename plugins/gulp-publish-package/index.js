@@ -22,18 +22,29 @@ function error( message ) {
 
 /**
  * Default status logger.
+ * 
+ * __NOTE:__ If `path` is the only argument, it's persumed this is normal log.
  *
  * @param {String} path The path of the package being published.
- * @param {String} command Command to spawn.
- * @param {String[]} args Arguments that will be passed to the spawned process.
+ * @param {String} [command] Command to spawn.
+ * @param {String[]} [args] Arguments that will be passed to the spawned process.
+ * @param {{}} [runOpts] Options that will be passed to the spawned process.
  */
-function defaultLogger( path, command, args ) {
+function defaultLogger( path, command, args, runOpts ) {
 
-    args = args.slice( 0 );
+    if ( ! command && ! args && ! runOpts ) {
 
-    args.unshift( color.magenta( path.replace( /\\/g, "/" ) ), command );
+        log.info( path );
 
-    log.info( ...args );
+    } else {
+
+        args = args.slice( 0 );
+
+        args.unshift( color.magenta( path.replace( /\\/g, "/" ) ), command );
+
+        log.info( ...args );
+
+    }
 
 }
 
@@ -52,6 +63,7 @@ function publishThrough( argv, options = {} ) {
 
     }
     options = parseArgv( argv, options );
+    options.checkVersion = options.checkVersion || options[ "check-version" ];
 
     if ( ! options.log ) options.log = defaultLogger;
 

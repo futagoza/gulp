@@ -5,10 +5,8 @@ const { visitArgv } = require( "@futagoza/cli-utils" );
 /**
  * Will look through the given _argv_-like _array_ for known options.
  * 
- * __NOTE:__ All options are expected to start with `--`, and unless a known NPM or Yarn flag,
- * must always be followed by a value.
- * 
- * __WARNING:__ Will throw a fatel error.
+ * __NOTE:__ All options are expected to start with `--`, and unless its a known flag, must always
+ * be followed by a value, otherwise it will throw a fatel error.
  * 
  * @param {String[]} args The arguments array (typically `process.argv.slice(2)`)
  * @param {{}} [defaults] An optional object containing the default options.
@@ -42,6 +40,8 @@ function parseArgv( args, defaults ) {
                 break;
 
             // Command line options without values (flags)
+            case "check-version":
+            case "checkVersion":
             case "dry-run":
             case "dry":
             case "dryRun":

@@ -54,6 +54,6 @@ task( "publish", () => [
         "packages/*",
         "plugins/*",
     ] ),
-    publish()
+    publish( { checkVersion: true } )
 
 ] );

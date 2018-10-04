@@ -10,6 +10,9 @@
 * Set `@futagoza/publish-package` to use `@futagoza/child-process`
 * Added `@futagoza/gulpx`, a custom variant of the Gulp client and the Gulp CLI
 * Added `@futagoza/sync-yarn-workspaces`, a non-gulp package
+* Added the `checkVersion` option to `@futagoza/publish-package`
+* Updated `@futagoza/gulp-publish-package` to use the new `checkVersion` option
+* Updated documentation for some `@futagoza/*` packages 
 
 ## [v0.5.1](https://github.com/futagoza/gulp/compare/v0.5.0...v0.5.1) _(2018-09-26)_
 
