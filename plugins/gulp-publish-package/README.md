@@ -31,6 +31,7 @@ gulp.task( "publish", () => pump(
 
 The options are the same as [@futagoza/publish-package](https://www.npmjs.com/package/@futagoza/publish-package), with the exception of:
 
+- _log_ - Has a default logging function assigned
 - _only_ - Only publish packages that match the condition. See [gulp-match](https://github.com/robrich/gulp-match)
 
 ```ts

@@ -36,6 +36,7 @@ function publish( path?: string, options: {} ): Promise;
 | dry | --dry-run | Alias for _dry-run_ |
 | dryRun | --dry-run | Alias for _dry-run_ |
 | folder | | Alternative to the _path_ argument<sub>1</sub> |
+| log | | An optional logging function<sub>2</sub> |
 | new-version | --new-version _value_ | See [https://yarnpkg.com/lang/en/docs/cli/publish/][2] |
 | newVersion | --new-version _value_ | Alias for _new-version_ |
 | otp | --otp _value_ | See [https://docs.npmjs.com/cli/publish][1] |
@@ -53,6 +54,7 @@ function publish( path?: string, options: {} ): Promise;
 | yarn | | Will use `yarn publish` instead of `npm publish` |
 
 1. Can be used in place of path (e.g. `publish( { dir: ... } )`)
+2. Check `defaultLogger` in [@futagoza/gulp-publish-package/index.js](https://github.com/futagoza/gulp/blob/master/plugins/gulp-publish-package/index.js) for an example
 
 **NOTE:** To circumvent an issue with running `npm publish` from a `yarn run ...` command, the registry option is set to _https://registry.npmjs.org/_ by default when running `npm publish` only, otherwise it is only included when specified.
 
