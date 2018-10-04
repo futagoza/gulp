@@ -1,8 +1,10 @@
-Custom variants of the [Gulp client](https://www.npmjs.com/package/gulp) (to use from within a _gulpfile.js_) as well as a custom variant of the [Gulp CLI](https://www.npmjs.com/package/gulp-cli).
+A custom variant of the [Gulp client](https://www.npmjs.com/package/gulp) (to use from within a _gulpfile.js_) as well as a custom variant of the [Gulp CLI](https://www.npmjs.com/package/gulp-cli).
 
 ## client
 
-> For a better understanding of the API, take a look at the [TypeScript definition file](https://github.com/futagoza/gulp/blob/master/packages/gulpx/client/index.d.ts).
+* No need to use [pump](https://www.npmjs.com/package/pump), [stream.pipeline](https://nodejs.org/dist/latest-v10.x/docs/api/stream.html#stream_stream_pipeline_streams_callback) or [@futagoza/pump](https://www.npmjs.com/package/@futagoza/pump) when using `gulp.task`, just return an array
+* No need to use `gulp.src` with `{ read: false }`; with `gulp.path`, the `read` option is always `false`
+* Exports both _pipeline_ and _pump_ from [@futagoza/pump](https://www.npmjs.com/package/@futagoza/pump), so no need to include in your _package.json_
 
 ```js
 const gulp = require( "@futagoza/gulpx" );
@@ -30,13 +32,17 @@ gulp.pump
 gulp.watch
 ```
 
-* No need to use [pump](https://www.npmjs.com/package/pump), [stream.pipeline](https://nodejs.org/dist/latest-v10.x/docs/api/stream.html#stream_stream_pipeline_streams_callback) or [@futagoza/pump](https://www.npmjs.com/package/@futagoza/pump) when using `gulp.task`, just return an array
-* No need to use `gulp.src` with `{ read: false }`; with `gulp.path`, the `read` option is always `false`
-* Exports both _pipeline_ and _pump_ from [@futagoza/pump](https://www.npmjs.com/package/@futagoza/pump), so no need to include in your _package.json_
+> For a better understanding of the API, please take a look at the [TypeScript definition file](https://github.com/futagoza/gulp/blob/master/packages/gulpx/client/index.d.ts).
 
 ## cli
 
 The CLI for `@futagoza/gulpx` use's the `gulp` command, so no need to change your workflow.
+
+* Exported by default from `@futagoza/gulpx/bin/index.js` (API usage is in the JavaScript example below)
+* Will treat all command line arguments as task names untill the first argument that starts with `-`
+* By default looks for the [Gulp client](https://www.npmjs.com/package/gulp) before looking for the _@futagoza/gulpx_ client
+* Always runs the requested tasks in _series_
+* Displays the number of requested tasks completed at the end
 
 ```js
 const { main, lookup } = require( "@futagoza/gulpx/bin" );
@@ -59,9 +65,6 @@ const settings = {
     // A resolved path to a javascript file that provides the Gulp tasks (defaults to 'gulpfile.js')
     provider,
 
-    // Options that are passed to each task (defaults to parsed CLI options and flags)
-    options,
-
     // A list of tasks to run (defaults to 'default')
     requests,
 
@@ -77,15 +80,7 @@ lookup.dependency( cwd, modules )
 main( settings );
 ```
 
-* Exported by default from `@futagoza/gulpx/bin/index.js` (API usage is the above JavaScript example)
-* Always runs the requested tasks in _series_
-* Displays the number of requested tasks completed at the end
-
-> __NOTE:__ The _@futagoza/gulpx_ CLI has no option or flag of its own, and no task listing functionality.
-
-* __ALL OPTIONS AND FLAGS__ are passed to each task as a second argument (e.g. `task( done, options ){ ... }`)
-* If an argument that equals `--` is found on the CLI, everything after it is an array under the option `--`
-* Any option or flag may contain a value using `=` (usually options consume the next argument, and flags are set to _true_)
+> __WARNING:__ The _@futagoza/gulpx_ CLI has no option or flag of its own, and no task listing functionality.
 
 -----
 
