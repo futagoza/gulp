@@ -1,5 +1,11 @@
 > See the  [commit history](https://github.com/futagoza/gulp/commits/master) for a full list of changes.
 
+## goals
+
+* Update `--only` for `@futagoza/gulp-*`
+* Add `--ignore` to `@futagoza/gulp-*`
+* Add `--only` and `--ignore` to `@futagoza/sync-yarn-workspaces`
+
 ## next
 
 * Added `@futagoza/create-stream`, a non-gulp package
