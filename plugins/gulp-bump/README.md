@@ -21,7 +21,7 @@ gulp.task( "bump", () => pump(
 
 ### cli usage
 
-This module was created to _always_ read the CLI arguments passed to the current Gulp task. It takes the arguments from the command line interface and passes them through _[minimist](https://www.npmjs.com/package/minimist)_. You can also programmatically pass default options.
+This module was created to _always_ read the CLI arguments passed to the current Gulp task. It takes the arguments from the command line interface, processes them before finally passing them to _[gulp-regex][2]_. You can also programmatically pass default options.
 
 > Optionally you can pass the `argv` yourself as the first argument (an array), or as `options.argv`
 
@@ -32,17 +32,19 @@ As well as the options from [gulp-regex][2], you can use the following:
 | api option | cli option | description |
 | ---------- | ---------- | ---------------- |
 | argv  | | Used if no `argv` argument was provided; otherwise defaults to `process.argv` |
-| major | --major | Sets the option `type` for [gulp-regex][2] to `"major"`<sub>1</sub> |
-| minor | --minor | Sets the option `type` for [gulp-regex][2] to `"minor"`<sub>1</sub> |
+| ignore<sub>1</sub> | --ignore | Inverts the job of _only_, bumping every file but those that match the pattern |
+| major | --major | Sets the option `type` for [gulp-regex][2] to `"major"`<sub>2</sub> |
+| minor | --minor | Sets the option `type` for [gulp-regex][2] to `"minor"`<sub>2</sub> |
 | new-version | --new-version _value_<br>-V _value_ | Gulp prints it's own version with `--version`, so this happened... |
-| only | --only _condition_ | Only bump files that match the condition. See [gulp-match](https://github.com/robrich/gulp-match) |
-| patch | --patch | Sets the option `type` for [gulp-regex][2] to `"patch"`<sub>1</sub> |
+| only<sub>1</sub> | --only _pattern_ | Only bump files with the property _name_ that match _pattern_ (a RegExp string) |
+| patch | --patch | Sets the option `type` for [gulp-regex][2] to `"patch"`<sub>2</sub> |
 | quiet | --quit | Flag to silence the summary. |
-| summary<sub>2</sub> | | A callback that by default prints the summary to the console. |
+| summary<sub>3</sub> | | A callback that by default prints the summary to the console. |
 | tag | --tag, --keepmetadata | Flag that enables the `keepmetadata` option for [gulp-regex][2]. |
 
-1. Only used if there's no `type` or `version` options
-2. Has a call signature of `(filename: string, results: {}) => void`
+1. This has only implemented for and tested on JSON files
+2. Only used if there's no `type` or `version` options
+3. Has a call signature of `(filename: string, results: {}) => void`
 
 ### license
 

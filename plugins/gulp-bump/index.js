@@ -2,10 +2,10 @@
 
 const { color, log } = require( "@futagoza/cli-utils" );
 const bumpregex = require( "bump-regex" );
-const match = require( "gulp-match" );
 const parseArgv = require( "./lib/parseArgv" );
 const PluginError = require( "plugin-error" );
 const through = require( "through2" );
+const toRegex = require( "to-regex" );
 
 /**
  * Return's a new Gulp plugin error.
@@ -72,13 +72,28 @@ function bump( argv, options = {} ) {
 
     const printSummary = typeof options.summary === "function" ? options.summary : summary;
 
+    let ignore = void 0;
+    if ( typeof options.only === "string" )
+
+        ignore = toRegex( options.only, {
+            contains: true,
+            negate: options.ignore !== true,
+            nocase: true,
+        } );
+
     return through.obj( ( file, encoding, cb ) => {
 
         if ( file.isNull() ) return cb( null, file );
         if ( file.isStream() ) return cb( error( "Streaming not supported" ) );
-        if ( ! match( file, options.only || true ) ) return cb( null, file );
 
         options.str = String( file.contents );
+        if ( ignore && typeof file.path === "string" && file.path.endsWith( ".json" ) ) {
+
+            const { name } = JSON.parse( options.str );
+            if ( ignore.test( name ) ) return cb( null, file );
+
+        }
+
         bumpregex( options, ( err, result ) => {
 
             if ( err ) return cb( error( err ) );

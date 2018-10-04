@@ -2,9 +2,9 @@
 
 ## goals
 
-* Update `--only` for `@futagoza/gulp-*`
-* Add `--ignore` to `@futagoza/gulp-*`
 * Add `--only` and `--ignore` to `@futagoza/sync-yarn-workspaces`
+* Add a JSON reading, formatting and writing package
+* Update `@futagoza/gulp-bump` to operate on `package.json` files only
 
 ## next
 
@@ -18,6 +18,8 @@
 * Added `@futagoza/sync-yarn-workspaces`, a non-gulp package
 * Added the `checkVersion` option to `@futagoza/publish-package`
 * Updated `@futagoza/gulp-publish-package` to use the new `checkVersion` option
+* Updated the behavior of the `--only` option for `@futagoza/gulp-*`
+* Added the `--ignore` flag to `@futagoza/gulp-*`
 * Updated documentation for some `@futagoza/*` packages 
 
 ## [v0.5.1](https://github.com/futagoza/gulp/compare/v0.5.0...v0.5.1) _(2018-09-26)_

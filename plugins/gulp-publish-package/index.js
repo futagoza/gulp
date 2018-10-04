@@ -3,11 +3,11 @@
 const { existsSync } = require( "fs" );
 const { join } = require( "path" );
 const { color, log } = require( "@futagoza/cli-utils" );
-const match = require( "gulp-match" );
 const parseArgv = require( "./lib/parseArgv" );
 const publish = require( "@futagoza/publish-package" );
 const PluginError = require( "plugin-error" );
 const through = require( "through2" );
+const toRegex = require( "to-regex" );
 
 /**
  * Builds a Gulp plugin error for this package.
@@ -67,13 +67,28 @@ function publishThrough( argv, options = {} ) {
 
     if ( ! options.log ) options.log = defaultLogger;
 
+    let ignore = void 0;
+    if ( typeof options.only === "string" )
+
+        ignore = toRegex( options.only, {
+            contains: true,
+            negate: options.ignore !== true,
+            nocase: true,
+        } );
+
     return through.obj( ( file, encoding, done ) => {
 
         const path = file.path;
 
         if ( file.isStream() ) return done( error( "Streaming not supported" ) );
         if ( ! existsSync( path ) ) return done( error( "Path not found: " + path ) );
-        if ( ! match( file, options.only || true ) ) return done( null, file );
+
+        if ( ignore ) {
+
+            const { name } = require( join( path, "package.json" ) );
+            if ( ignore.test( name ) ) return done( null, file );
+
+        }
 
         publish( path, options )
             .catch( done )

@@ -31,11 +31,13 @@ gulp.task( "publish", () => pump(
 
 The options are the same as [@futagoza/publish-package](https://www.npmjs.com/package/@futagoza/publish-package), with the exception of:
 
-- _log_ - Has a default logging function assigned
-- _only_ - Only publish packages that match the condition. See [gulp-match](https://github.com/robrich/gulp-match)
+- __log__ - Has a default logging function assigned
+- __only__ - Only publish packages with names that match the given pattern (will be interpreted as a string for a RegExp)
+- __ignore__ - A boolean that inverts the affects of _only_, publishing every package but those that match the pattern
 
 ```ts
-function publish( argv?: string[], options: {} ): stream.Transform;
+function publish( argv: string[], options?: {} ): stream.Transform;
+function publish( options: {} ): stream.Transform;
 ```
 
 The following are CLI options that can be used either in place of them, or to over-ride them:
@@ -48,9 +50,10 @@ The following are CLI options that can be used either in place of them, or to ov
 | dry-run | --dry-run | --dry-run |
 | dry | --dry | --dry-run |
 | dryRun | --dryRun | --dry-run |
+| ignore | --ignore | |
 | new-version | --new-version _value_ | --new-version _value_ |
 | newVersion | --newVersion _value_ | --new-version _value_ |
-| only | --only _condition_ | |
+| only | --only _pattern_ | |
 | otp | --otp _value_ | --otp _value_ |
 | otpcode | --otpcode _value_ | --otp _value_ |
 | private | --private | --access _restricted_ |

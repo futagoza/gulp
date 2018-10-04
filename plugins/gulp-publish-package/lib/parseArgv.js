@@ -45,6 +45,7 @@ function parseArgv( args, defaults ) {
             case "dry-run":
             case "dry":
             case "dryRun":
+            case "ignore":
             case "private":
             case "public":
             case "scoped":

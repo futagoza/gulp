@@ -39,6 +39,7 @@ function parseArgv( args, defaults ) {
 
             // Command line options without values (flags)
             case "case":
+            case "ignore":
             case "keepmetadata":
             case "major":
             case "minor":
