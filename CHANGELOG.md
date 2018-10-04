@@ -29,6 +29,7 @@
 * Released  _@futagoza/node-run v2.0.0_
 * Released  _@futagoza/publish-package v1.6.0_
 * Released  _@futagoza/sync-yarn-workspaces v1.0.0_
+* Released  _@futagoza/gulp-bump v0.6.0_
 
 ## [v0.5.1](https://github.com/futagoza/gulp/compare/v0.5.0...v0.5.1) _(2018-09-26)_
 
