@@ -1,6 +1,6 @@
 {
     "name": "@futagoza/gulp",
-    "version": "0.5.1",
+    "version": "0.6.0",
     "description": "Plugins and functions for use with Gulp 4",
     "keywords": [
         "gulp",
@@ -21,15 +21,15 @@
         "release"
     ],
     "homepage": "https://github.com/futagoza/gulp",
-    "repository": "https://github.com/futagoza/gulp/tree/master/packages/gulp",
+    "repository": "https://github.com/futagoza/gulp/tree/master/plugins/gulp",
     "license": "MIT",
     "author": "Futago-za Ryuu <futagoza.ryuu@gmail.com>",
     "main": "index.js",
     "dependencies": {
-        "@futagoza/cli-utils": "0.5.x",
-        "@futagoza/gulp-bump": "0.5.x",
-        "@futagoza/child-process": "0.5.x",
-        "@futagoza/gulp-publish-package": "0.5.x"
+        "@futagoza/child-process": "^1.0.0",
+        "@futagoza/cli-utils": "^1.5.1",
+        "@futagoza/gulp-bump": "^0.6.0",
+        "@futagoza/gulp-publish-package": "^0.6.0"
     },
     "engines": {
         "node": ">= 6"

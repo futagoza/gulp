@@ -6,7 +6,7 @@
 * Add a JSON reading, formatting and writing package
 * Update `@futagoza/gulp-bump` to operate on `package.json` files only
 
-## next
+## [v0.6.0](https://github.com/futagoza/gulp/compare/v0.5.1...v0.6.0) _(2018-10-04)_
 
 * Added `@futagoza/create-stream`, a non-gulp package
 * Added `@futagoza/pump`, an optional gulp package
@@ -21,16 +21,16 @@
 * Updated the behavior of the `--only` option for `@futagoza/gulp-*`
 * Added the `--ignore` flag to `@futagoza/gulp-*`
 * Updated documentation for some `@futagoza/*` packages
-* Released  _@futagoza/child-process v1.0.0_
-* Released  _@futagoza/cli-utils v1.5.1_
-* Released  _@futagoza/create-stream v1.0.0_
-* Released  _@futagoza/pump v1.0.0_
-* Released  _@futagoza/gulpx v1.0.0_
-* Released  _@futagoza/node-run v2.0.0_
-* Released  _@futagoza/publish-package v1.6.0_
-* Released  _@futagoza/sync-yarn-workspaces v1.0.0_
-* Released  _@futagoza/gulp-bump v0.6.0_
-* Released  _@futagoza/gulp-publish-package v0.6.0_
+* Bumped  __@futagoza/child-process__ to _v1.0.0_
+* Bumped  __@futagoza/cli-utils__ to _v1.5.1_
+* Bumped  __@futagoza/create-stream__ to _v1.0.0_
+* Bumped  __@futagoza/pump__ to _v1.0.0_
+* Bumped  __@futagoza/gulpx__ to _v1.0.0_
+* Bumped  __@futagoza/node-run__ to _v2.0.0_
+* Bumped  __@futagoza/publish-package__ to _v1.6.0_
+* Bumped  __@futagoza/sync-yarn-workspaces__ to _v1.0.0_
+* Bumped  __@futagoza/gulp-bump__ to _v0.6.0_
+* Bumped  __@futagoza/gulp-publish-package__ to _v0.6.0_
 
 ## [v0.5.1](https://github.com/futagoza/gulp/compare/v0.5.0...v0.5.1) _(2018-09-26)_
 
